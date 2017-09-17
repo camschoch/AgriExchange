@@ -37,5 +37,8 @@ namespace AgriExchange.Models
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<Tags> Tags { get; set; }
+        public DbSet<BlogLikes> BlogLikes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<CommentLikes> CommentLikes { get; set; }
     }
 }
