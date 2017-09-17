@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201709171644371_added user addresses and user badges table, added ispublic to cropentry.Designer.cs">
       <DependentUpon>201709171644371_added user addresses and user badges table, added ispublic to cropentry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709171653546_added ratings table.cs" />
+    <Compile Include="Migrations\201709171653546_added ratings table.Designer.cs">
+      <DependentUpon>201709171653546_added ratings table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -220,6 +224,7 @@
     <Compile Include="Models\CropEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Models\UserBadges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -306,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171644371_added user addresses and user badges table, added ispublic to cropentry.resx">
       <DependentUpon>201709171644371_added user addresses and user badges table, added ispublic to cropentry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171653546_added ratings table.resx">
+      <DependentUpon>201709171653546_added ratings table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

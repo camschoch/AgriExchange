@@ -34,5 +34,6 @@ namespace AgriExchange.Models
         public DbSet<CropEntry> CropEntries { get; set; }
         public DbSet<UserBadges> UserBadges { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }
