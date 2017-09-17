@@ -205,8 +205,15 @@
     <Compile Include="Migrations\201709151824087_first migration.Designer.cs">
       <DependentUpon>201709151824087_first migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709171544468_added address, badge and crop entry tables.cs" />
+    <Compile Include="Migrations\201709171544468_added address, badge and crop entry tables.Designer.cs">
+      <DependentUpon>201709171544468_added address, badge and crop entry tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\CropEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -287,6 +294,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709151824087_first migration.resx">
       <DependentUpon>201709151824087_first migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171544468_added address, badge and crop entry tables.resx">
+      <DependentUpon>201709171544468_added address, badge and crop entry tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

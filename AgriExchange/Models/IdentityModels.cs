@@ -29,5 +29,8 @@ namespace AgriExchange.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Badge> Badges { get; set; }
+        public DbSet<CropEntry> CropEntries { get; set; }
     }
 }
