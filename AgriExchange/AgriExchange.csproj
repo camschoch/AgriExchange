@@ -229,10 +229,15 @@
     <Compile Include="Migrations\201709171716251_added blog likes, comments, and comment likes.Designer.cs">
       <DependentUpon>201709171716251_added blog likes, comments, and comment likes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709171723430_added blocks and reports.cs" />
+    <Compile Include="Migrations\201709171723430_added blocks and reports.Designer.cs">
+      <DependentUpon>201709171723430_added blocks and reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\Block.cs" />
     <Compile Include="Models\BlogLikes.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -241,6 +246,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Models\UserBadges.cs" />
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171716251_added blog likes, comments, and comment likes.resx">
       <DependentUpon>201709171716251_added blog likes, comments, and comment likes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171723430_added blocks and reports.resx">
+      <DependentUpon>201709171723430_added blocks and reports.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
