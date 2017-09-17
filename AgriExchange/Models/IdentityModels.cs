@@ -42,5 +42,7 @@ namespace AgriExchange.Models
         public DbSet<CommentLikes> CommentLikes { get; set; }
         public DbSet<Block> Blocks { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Follow> Follows { get; set; }
+        public DbSet<VendorApplications> VendorApplications { get; set; }
     }
 }
