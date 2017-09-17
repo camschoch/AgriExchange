@@ -5,12 +5,10 @@ using System.Web;
 
 namespace AgriExchange.Models
 {
-    public class CropEntry
+    public class UserAddress
     {
         public int ID { get; set; }
+        public Address Address { get; set; }
         public ApplicationUser User { get; set; }
-        public string Crop { get; set; }
-        public DateTime DatePlanted { get; set; }
-        public bool IsPublic { get; set; }
     }
 }
