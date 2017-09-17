@@ -35,5 +35,7 @@ namespace AgriExchange.Models
         public DbSet<UserBadges> UserBadges { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+        public DbSet<Tags> Tags { get; set; }
     }
 }

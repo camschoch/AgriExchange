@@ -217,14 +217,24 @@
     <Compile Include="Migrations\201709171653546_added ratings table.Designer.cs">
       <DependentUpon>201709171653546_added ratings table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709171704261_added blog post table.cs" />
+    <Compile Include="Migrations\201709171704261_added blog post table.Designer.cs">
+      <DependentUpon>201709171704261_added blog post table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709171706447_added tags.cs" />
+    <Compile Include="Migrations\201709171706447_added tags.Designer.cs">
+      <DependentUpon>201709171706447_added tags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\CropEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Models\UserBadges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -314,6 +324,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171653546_added ratings table.resx">
       <DependentUpon>201709171653546_added ratings table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171704261_added blog post table.resx">
+      <DependentUpon>201709171704261_added blog post table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171706447_added tags.resx">
+      <DependentUpon>201709171706447_added tags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
