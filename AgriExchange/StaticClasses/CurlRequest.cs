@@ -4,15 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AgriExchange.StaticClasses
 {
     static public class CurlRequest
     {
-        public static void Curl()
+
+        public static void Curl(string hourlyTemp, string location)
         {
+
             //find a way to enter peramater for search 
-            var client = new RestClient("https://insight.api.wdtinc.com/daily-high-temperature/35.191/-97.439");
+            var client = new RestClient("https://insight.api.wdtinc.com/" + hourlyTemp + location);
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "586e3421-1f96-a0fd-f4d7-5af711fba4e3");
             request.AddHeader("cache-control", "no-cache");
@@ -21,8 +27,16 @@ namespace AgriExchange.StaticClasses
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine(response.Data.startDate);
-                Console.WriteLine(response.Data.endDate);
+                //var tempData = response.Data.value;
+                var tempData2 = response.Data.series;
+                var newData = tempData2.Split('\'');
+                //JObject json = JObject.Parse(newData);
+                JObject json = JObject.Parse(tempData2);
+                foreach(var item in json)
+                {
+                    var test = item;
+                }
+                //var myDetails = JsonConvert.DeserializeObject<WeatherData>(response.Content);
             }
         }
         public static void Http(string search, string typeSearch)

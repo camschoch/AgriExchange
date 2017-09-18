@@ -17,7 +17,9 @@ namespace AgriExchange.Controllers
 
         public ActionResult CurlCall()
         {
-            CurlRequest.Curl();
+            string hourlyTemp = "daily-high-temperature";
+            string location = "/43.029494/-87.904047";
+            CurlRequest.Curl(hourlyTemp, location);
             return View();
         }
 
