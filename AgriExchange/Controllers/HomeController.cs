@@ -28,9 +28,26 @@ namespace AgriExchange.Controllers
         [HttpPost]
         public ActionResult SubmitVendorApplication(VendorApplications model)
         {
-            context.VendorApplications.Add(model);
-            context.SaveChanges();
-            return RedirectToAction("SubmissionSuccess");
+            model.IsApproved = false;
+            var currentApplications = (from data in context.VendorApplications where data.Email.ToLower() == model.Email.ToLower() select data).ToList();
+            if (currentApplications.Count == 0)
+            {
+                context.VendorApplications.Add(model);
+                context.SaveChanges();
+                return RedirectToAction("SubmissionSuccess");
+            }
+            else
+            {
+                return RedirectToAction("SubmissionFailed");
+            }
+        }
+        public ActionResult SubmissionSuccess()
+        {
+            return View();
+        }
+        public ActionResult SubmissionFailed()
+        {
+            return View();
         }
         public ActionResult About()
         {
