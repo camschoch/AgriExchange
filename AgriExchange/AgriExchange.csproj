@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.Designer.cs">
       <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709181503309_added user rolles.cs" />
+    <Compile Include="Migrations\201709181503309_added user rolles.Designer.cs">
+      <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -374,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.resx">
       <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181503309_added user rolles.resx">
+      <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
