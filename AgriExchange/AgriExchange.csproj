@@ -77,8 +77,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=105.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.2\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201709171729138_added vendor applications and follows.Designer.cs">
       <DependentUpon>201709171729138_added vendor applications and follows.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.cs" />
+    <Compile Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.Designer.cs">
+      <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -249,6 +253,7 @@
     <Compile Include="Models\Block.cs" />
     <Compile Include="Models\BlogLikes.cs" />
     <Compile Include="Models\BlogPost.cs" />
+    <Compile Include="Models\BlogTags.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentLikes.cs" />
     <Compile Include="Models\CropEntry.cs" />
@@ -366,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171729138_added vendor applications and follows.resx">
       <DependentUpon>201709171729138_added vendor applications and follows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.resx">
+      <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

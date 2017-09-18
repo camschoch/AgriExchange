@@ -5,12 +5,9 @@ using System.Web;
 
 namespace AgriExchange.Models
 {
-    public class Comment
+    public class BlogTags
     {
         public int ID { get; set; }
+        public Tags Tag { get; set;}
         public BlogPost Blog { get; set; }
-        public ApplicationUser Uset { get; set; }
-        public string Text { get; set; }
-        public DateTime PostDate { get; set; }
-    }
-}
+    }}
