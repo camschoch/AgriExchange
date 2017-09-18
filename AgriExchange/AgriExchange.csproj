@@ -257,6 +257,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\SkyWise\FruitData.cs" />
     <Compile Include="Models\SkyWise\WeatherData.cs" />
     <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\UserAddress.cs" />

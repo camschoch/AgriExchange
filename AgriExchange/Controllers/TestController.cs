@@ -15,9 +15,17 @@ namespace AgriExchange.Controllers
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult CurlCall()
         {
-            CurlRequest.thing();
+            CurlRequest.Curl();
+            return View();
+        }
+
+        public ActionResult HttpCall()
+        {
+            string searchName = "Bora%20Berry";
+            string typeSearch = "tfvitem=";
+            CurlRequest.Http(searchName, typeSearch);
             return View();
         }
     }
