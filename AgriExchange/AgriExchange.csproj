@@ -201,9 +201,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GardenerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +249,10 @@
     <Compile Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.cs" />
     <Compile Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.Designer.cs">
       <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181503309_added user rolles.cs" />
+    <Compile Include="Migrations\201709181503309_added user rolles.Designer.cs">
+      <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,9 +341,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\SubmitVendorApplication.cshtml" />
+    <Content Include="Views\Home\SubmissionSuccess.cshtml" />
+    <Content Include="Views\Home\SubmissionFailed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Gardener\" />
+    <Folder Include="Views\Vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -376,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709181443026_added date to blogs and comments and added tag junction table.resx">
       <DependentUpon>201709181443026_added date to blogs and comments and added tag junction table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181503309_added user rolles.resx">
+      <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

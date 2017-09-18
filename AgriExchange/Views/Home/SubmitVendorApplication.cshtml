@@ -1,0 +1,23 @@
+﻿@model AgriExchange.Models.VendorApplications
+@{
+    ViewBag.Title = "SubmitVendorApplication";
+}
+
+<h2>SubmitVendorApplication</h2>
+
+@using (Html.BeginForm())
+{
+    <h5>Enter Your Email for Vendor account</h5>
+    <div class="form-group">
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+
+}
