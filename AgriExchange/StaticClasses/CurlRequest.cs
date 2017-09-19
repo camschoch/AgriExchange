@@ -26,9 +26,15 @@ namespace AgriExchange.StaticClasses
             IRestResponse<WeatherData> response = client.Execute<WeatherData>(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-             {
-                var deserializedProduct = new JavaScriptSerializer().Deserialize<List<WeatherData>>(response.Data.series.ToString());
-               
+            {
+
+                var tempData = response.Data.value;
+                var tempData2 = response.Content;
+                var listTempData = response.Data.series;
+                foreach(var item in listTempData)
+                {
+                    var hold = item;
+                }
             }
         }
         public static void Http(string search, string typeSearch)
@@ -39,7 +45,6 @@ namespace AgriExchange.StaticClasses
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("authorization", "Basic NjhmODM5MGE6ZDBmNTc2ZjM3MjYxZTk4NWUzZmE4YTk3YTZlMDUyNTg=");
             IRestResponse response = client.Execute(request);
-
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
