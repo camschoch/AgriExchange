@@ -80,6 +80,7 @@ namespace AgriExchange.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                   
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -451,6 +452,7 @@ namespace AgriExchange.Controllers
             {
                 return Redirect(returnUrl);
             }
+            
             return RedirectToAction("Index", "Home");
         }
 

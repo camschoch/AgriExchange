@@ -20,13 +20,13 @@ namespace AgriExchange.Controllers
             string hourlyTemp = "daily-high-temperature";
             string location = "/43.029494/-87.904047";
             CurlRequest.Curl(hourlyTemp, location);
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult HttpCall()
         {
-            string searchName = "Bora%20Berry";
-            string typeSearch = "tfvitem=";
+            string searchName = "apple";
+            string typeSearch = "search=";
             CurlRequest.Http(searchName, typeSearch);
             return View();
         }

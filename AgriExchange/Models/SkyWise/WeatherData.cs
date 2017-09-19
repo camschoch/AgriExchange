@@ -12,7 +12,7 @@ namespace AgriExchange.Models.SkyWise
         public int latitude { get; set; }
         public int longitude { get; set; }
         public int baseTemperature { get; set; }
-        public string unit { get; set; }
+        public List<unitItem> unit { get; set; }
         public int value { get; set; }
         public string validDate { get; set; }
         public string description { get; set; }
@@ -26,5 +26,10 @@ namespace AgriExchange.Models.SkyWise
     {
         public string validDate { get; set; }
         public string value { get; set; }
+    }
+    public class unitItem
+    {
+        public string description { get; set; }
+        public string label { get; set; }
     }
 }
