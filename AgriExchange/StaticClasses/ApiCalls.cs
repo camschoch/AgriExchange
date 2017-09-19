@@ -11,10 +11,10 @@ using Newtonsoft.Json.Linq;
 
 namespace AgriExchange.StaticClasses
 {
-    static public class CurlRequest
+    static public class ApiCalls
     {
 
-        public static void Curl(string hourlyTemp, string location)
+        public static void WeatherApi(string hourlyTemp, string location)
         {
             List<string> paramaters = new List<string>();
             paramaters.Add("daily-high-temperature");
@@ -24,8 +24,7 @@ namespace AgriExchange.StaticClasses
 
             //find a way to enter peramater for search
             foreach (var paramater in paramaters)
-            {
-                
+            {                
                 var client = new RestClient("https://insight.api.wdtinc.com/" + paramater + location);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("postman-token", "586e3421-1f96-a0fd-f4d7-5af711fba4e3");
@@ -43,7 +42,7 @@ namespace AgriExchange.StaticClasses
                 }
             }
         }
-        public static void Http(string search, string typeSearch)
+        public static void FruitApi(string search, string typeSearch)
         {
             var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?"+ typeSearch + search);
             var request = new RestRequest(Method.GET);

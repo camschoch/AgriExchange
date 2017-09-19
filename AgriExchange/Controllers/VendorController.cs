@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AgriExchange.Models;
 
 namespace AgriExchange.Controllers
 {
     public class VendorController : Controller
     {
-        ApplicationDbContext context;
-        public VendorController()
-        {
-            context = new ApplicationDbContext();
-            
-        }
         // GET: Vendor
         public ActionResult Index()
         {
             return View();
+<<<<<<< HEAD
         }
         public ActionResult SubmitApplication()
         {
@@ -39,6 +33,8 @@ namespace AgriExchange.Controllers
         }
 
 
+=======
+        } 
+>>>>>>> f4d6901ae89ffaaca6dcac18c2dc340276ffe5e5
     }
-
 }
