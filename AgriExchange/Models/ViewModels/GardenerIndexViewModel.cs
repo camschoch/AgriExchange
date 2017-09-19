@@ -7,7 +7,7 @@ namespace AgriExchange.Models.ViewModels
 {
     public class GardenerIndexViewModel
     {
-        List<Forcast> Forcast { get; set; }
+        public List<Forcast> Forcast { get; set; }
         public GardenerIndexViewModel()
         {
             Forcast = new List<Forcast>();
