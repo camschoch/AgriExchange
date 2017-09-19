@@ -290,6 +290,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StaticClasses\ApiCalls.cs" />
+    <Compile Include="StaticClasses\ForcastRetriever.cs" />
     <Compile Include="StaticClasses\UserRetriever.cs" />
   </ItemGroup>
   <ItemGroup>

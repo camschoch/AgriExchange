@@ -20,17 +20,8 @@ namespace AgriExchange.Controllers
         public ActionResult Index()
         {
             GardenerIndexViewModel model = new GardenerIndexViewModel();
-            model.Forcast = GetForcast();
+            model.Forcast = ForcastRetriever.GetForcast(User);
             return View();
-        }
-
-        private List<Forcast> GetForcast()
-        {
-            DateTime today = DateTime.Now;
-            string todayDate = today.Year.ToString() + "-" + today.Month.ToString() + "-" + today.Day;
-            ApplicationUser user = UserRetriever.RetrieveUser(User);
-            if()
-            return;
         }
     }
 }
