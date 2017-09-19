@@ -45,5 +45,6 @@ namespace AgriExchange.Models
         public DbSet<Follow> Follows { get; set; }
         public DbSet<VendorApplications> VendorApplications { get; set; }
         public DbSet<BlogTags> BlogTags { get; set; }
+        public DbSet<Forcast> Forcasts { get; set; }
     }
 }

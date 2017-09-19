@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201709181503309_added user rolles.Designer.cs">
       <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709191832237_added forcast table.cs" />
+    <Compile Include="Migrations\201709191832237_added forcast table.Designer.cs">
+      <DependentUpon>201709191832237_added forcast table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -266,6 +270,7 @@
     <Compile Include="Models\CommentLikes.cs" />
     <Compile Include="Models\CropEntry.cs" />
     <Compile Include="Models\Follow.cs" />
+    <Compile Include="Models\Forcast.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
@@ -396,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709181503309_added user rolles.resx">
       <DependentUpon>201709181503309_added user rolles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709191832237_added forcast table.resx">
+      <DependentUpon>201709191832237_added forcast table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
