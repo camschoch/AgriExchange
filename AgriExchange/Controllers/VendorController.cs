@@ -12,7 +12,7 @@ namespace AgriExchange.Controllers
         public ActionResult Index()
         {
             return View();
-<<<<<<< HEAD
+
         }
         public ActionResult SubmitApplication()
         {
@@ -33,8 +33,6 @@ namespace AgriExchange.Controllers
         }
 
 
-=======
-        } 
->>>>>>> f4d6901ae89ffaaca6dcac18c2dc340276ffe5e5
+
     }
 }
