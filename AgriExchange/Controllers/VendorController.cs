@@ -33,6 +33,10 @@ namespace AgriExchange.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ViewVendor()
+        {
+            return View();
+        }
 
 
     }
