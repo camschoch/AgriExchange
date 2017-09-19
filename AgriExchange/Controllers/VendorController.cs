@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgriExchange.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,13 @@ using System.Web.Mvc;
 namespace AgriExchange.Controllers
 {
     public class VendorController : Controller
+
     {
+        private ApplicationDbContext context;
+        public VendorController()
+        {
+            context = new ApplicationDbContext();
+        }
         // GET: Vendor
         public ActionResult Index()
         {
