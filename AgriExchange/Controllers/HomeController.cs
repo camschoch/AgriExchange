@@ -17,6 +17,18 @@ namespace AgriExchange.Controllers
 
         public ActionResult Index()
         {
+            if (this.User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else if (this.User.IsInRole("Gardener"))
+            {
+                return RedirectToAction("Index", "Gardener");
+            }
+            else if (this.User.IsInRole("Vendor"))
+            {
+                return RedirectToAction("Index", "Vendor");
+            }
             return View();
         }
 
