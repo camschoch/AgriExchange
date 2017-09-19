@@ -5,6 +5,7 @@ using System.Web;
 
 namespace AgriExchange.Models.SkyWise
 {
+    [Serializable]
     public class WeatherData
     {
         public string startDate { get; set; }
@@ -16,7 +17,7 @@ namespace AgriExchange.Models.SkyWise
         public int value { get; set; }
         public string validDate { get; set; }
         public string description { get; set; }
-        public string series { get; set; }
+        public WeatherData series { get; set; }
         public string name { get; set; }
         public string products { get; set; }
     }
