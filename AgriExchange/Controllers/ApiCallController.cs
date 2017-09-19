@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace AgriExchange.Controllers
 {
-    public class TestController : Controller
+    public class ApiCallController : Controller
     {
         // GET: Test
         public ActionResult Index()

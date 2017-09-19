@@ -20,7 +20,7 @@ namespace AgriExchange.StaticClasses
             paramaters.Add("daily-high-temperature");
             paramaters.Add("daily-low-temperature");
             paramaters.Add("daily-precipitation");
-            List<object> tempHold = new List<object>();
+            List<seriesItem> tempHold = new List<seriesItem>();
 
             //find a way to enter peramater for search
             foreach (var paramater in paramaters)
@@ -39,6 +39,14 @@ namespace AgriExchange.StaticClasses
                     {
                         tempHold.Add(item);
                     }
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                var thing = tempHold[i];
+                foreach (var item in tempHold)
+                {
+                    
                 }
             }
         }
