@@ -11,6 +11,7 @@ namespace AgriExchange.Controllers
         // GET: Gardener
         public ActionResult Index()
         {
+
             return View();
         }
     }
