@@ -350,6 +350,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Gardener\Index.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\SubmitApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
