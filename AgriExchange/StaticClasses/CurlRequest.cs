@@ -27,16 +27,14 @@ namespace AgriExchange.StaticClasses
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                //var tempData = response.Data.value;
-                var tempData2 = response.Data.series;
-                var newData = tempData2.Split('\'');
-                //JObject json = JObject.Parse(newData);
-                JObject json = JObject.Parse(tempData2);
-                foreach(var item in json)
+
+                var tempData = response.Data.value;
+                var tempData2 = response.Content;
+                var listTempData = response.Data.series;
+                foreach(var item in listTempData)
                 {
-                    var test = item;
+                    var hold = item;
                 }
-                //var myDetails = JsonConvert.DeserializeObject<WeatherData>(response.Content);
             }
         }
         public static void Http(string search, string typeSearch)
