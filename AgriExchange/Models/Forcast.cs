@@ -12,6 +12,7 @@ namespace AgriExchange.Models
         public double HighTemp { get; set; }
         public double LowTemp { get; set; }
         public double Percipitation { get; set; }
+        public ApplicationUser User { get; set; }
 
     }
 

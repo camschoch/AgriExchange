@@ -18,13 +18,13 @@ namespace AgriExchange.Controllers
         public ActionResult Index()
         {
             GardenerIndexViewModel model = new GardenerIndexViewModel();
-            model.Forcast = GetForcast();
+           // model.Forcast = GetForcast();
             return View();
         }
 
-        private List<Forcast> GetForcast()
-        {
-            return;
-        }
+        //private List<Forcast> GetForcast()
+        //{
+        //    return;
+        //}
     }
 }
