@@ -15,19 +15,19 @@ namespace AgriExchange.Controllers
             return View();
         }
 
-        public ActionResult CurlCall()
+        public ActionResult WeatherApiCall()
         {
             string hourlyTemp = "daily-high-temperature";
             string location = "/43.029494/-87.904047";
-            CurlRequest.Curl(hourlyTemp, location);
+            ApiCalls.WeatherApi(hourlyTemp, location);
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult HttpCall()
+        public ActionResult FruitApiCall()
         {
             string searchName = "apple";
             string typeSearch = "search=";
-            CurlRequest.Http(searchName, typeSearch);
+            ApiCalls.FruitApi(searchName, typeSearch);
             return View();
         }
     }
