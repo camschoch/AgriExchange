@@ -344,6 +344,9 @@
     <Content Include="Views\Home\SubmitVendorApplication.cshtml" />
     <Content Include="Views\Home\SubmissionSuccess.cshtml" />
     <Content Include="Views\Home\SubmissionFailed.cshtml" />
+    <Content Include="Views\Shared\Gardener_Layout.cshtml" />
+    <Content Include="Views\Vendor_Layout.cshtml" />
+    <Content Include="Views\Shared\Admin_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
