@@ -7,6 +7,7 @@ namespace AgriExchange.Models.ViewModels
 {
     public class BlogViewModel
     {
+        public ApplicationUser User { get; set; }
         public List<BlogPost> Blogs { get; set; }
         public List<BlogTags> Tags { get; set; }
         public List<BlogLikes> BlogLikes { get; set; }

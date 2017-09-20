@@ -1,0 +1,70 @@
+﻿@model AgriExchange.Models.ViewModels.BlogViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (Model.Blogs.Count > 0)
+{
+    for (int i = 0; i < Model.Blogs.Count; i++)
+    {
+        <h3>@Model.Blogs[i].Title</h3>
+        <h5>@Model.Blogs[i].DatePosted.ToString()</h5>
+        if (Model.Tags.Where(x => x.Blog.ID == Model.Blogs[i].ID).ToList().Count > 0)
+        {
+            <div>
+                <h4>Tags: </h4>
+                @foreach (var tag in Model.Tags.Where(x => x.Blog.ID == Model.Blogs[i].ID).ToList())
+                {
+                    <span>@(tag.Tag + ", ")</span>
+                }
+            </div>
+        }
+        <div>
+            <p>
+                @Model.Blogs[i].Text
+            </p>
+            @if ((from data in Model.BlogLikes where data.Blog.ID == Model.Blogs[i].ID select data.User.Id).Contains(Model.User.Id))
+            {
+            <p>@((Model.BlogLikes.Where(y => y.Blog.ID == Model.Blogs[i].ID).ToList().Count).ToString()) @Html.ActionLink("Unlike", "Like", "Blog", new { ID = Model.Blogs[i].ID })</p>
+            }
+            else
+            {
+                <p>@((Model.BlogLikes.Where(y => y.Blog.ID == Model.Blogs[i].ID).ToList().Count).ToString()) @Html.ActionLink("Like", "Like", "Blog", new { ID = Model.Blogs[i].ID })</p>
+            }
+            <p>@Html.ActionLink("Report", "Report", "Blog", new { ID = Model.Blogs[i].ID }, null)</p>
+        </div>
+        if(Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList().Count > 0)
+        {
+            for(int j = 0; j < Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList().Count; j++)
+            {
+                <div>
+                    <h4>
+                        @(Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].User.UserName.ToString())
+                    </h4>
+                    <h5>
+                        @(Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].PostDate.ToString())
+                    </h5>
+                    <p>
+                        @(Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].Text)
+                    </p>
+                    @if ((from data in Model.CommentLikes where data.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID select data.User.Id).Contains(Model.User.Id))
+                    {
+                        <p>@((Model.CommentLikes.Where(y => y.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID).ToList().Count).ToString()) @Html.ActionLink("Unlike", "Like", "Comment", new { ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID })</p>
+                    }
+                    else
+                    {
+                        <p>@((Model.CommentLikes.Where(y => y.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID).ToList().Count).ToString()) @Html.ActionLink("Like", "Like", "Comment", new { ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID })</p>
+                    }
+                    <p>@Html.ActionLink("Report", "Report", "Comment", new { ID = Model.Blogs[i].ID }, null)</p>
+                </div>
+            }
+        }
+        using (Html.BeginForm())
+            {
+
+
+            }
+        }
+    }
+}

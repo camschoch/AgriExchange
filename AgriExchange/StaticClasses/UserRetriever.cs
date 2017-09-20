@@ -18,6 +18,5 @@ namespace AgriExchange.StaticClasses
             ApplicationUser user = (from data in context.Users where data.UserName == userName select data).First();
             return user;
         }
-    }
-
+     }
 }
