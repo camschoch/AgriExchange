@@ -276,6 +276,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ApiDataClasses\GeoLocationData.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Block.cs" />
     <Compile Include="Models\BlogLikes.cs" />
@@ -290,8 +291,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
-    <Compile Include="Models\SkyWise\FruitData.cs" />
-    <Compile Include="Models\SkyWise\WeatherData.cs" />
+    <Compile Include="Models\ApiDataClasses\FruitData.cs" />
+    <Compile Include="Models\ApiDataClasses\WeatherData.cs" />
     <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Models\UserBadges.cs" />

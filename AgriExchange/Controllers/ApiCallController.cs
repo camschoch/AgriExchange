@@ -1,4 +1,5 @@
-﻿using AgriExchange.StaticClasses;
+﻿using AgriExchange.Models;
+using AgriExchange.StaticClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,18 @@ namespace AgriExchange.Controllers
             string searchName = "apple";
             string typeSearch = "search=";
             ApiCalls.FruitApi(searchName, typeSearch);
-            return View();
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult GeoLocationApi()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var userName = User.Identity.Name;
+            var user = (from data in context.Users where data.UserName == userName select data).First();
+            var addresses = (from data in context.UserAddresses where data.ID.ToString() == user.Id select data).First();
+            var realAddress = addresses.Address;
+            string addressString = "1600%20Amphitheatre%20Parkway%2C%20Mountain%20View%2C%20CA";
+            ApiCalls.GeoLocationApi(addressString);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

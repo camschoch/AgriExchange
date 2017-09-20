@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using AgriExchange.Models;
+using AgriExchange.Models.ApiDataClasses;
 
 namespace AgriExchange.StaticClasses
 {
@@ -144,6 +145,23 @@ namespace AgriExchange.StaticClasses
                 {
                     var hold = item;
                 }
+            }
+        }
+
+        public static void GeoLocationApi(string convertedAddress)
+        {            
+
+            var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("postman-token", "d0687862-1bdc-4966-e25f-ad919249e058");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+            IRestResponse<GeoLocationData> response = client.Execute<GeoLocationData>(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var lattitude = response.Data.results[0].geometry[0].location[0].lat;
+                var longitude = response.Data.results[0].geometry[0].location[0].lng;
             }
         }
     }
