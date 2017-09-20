@@ -18,8 +18,12 @@ namespace AgriExchange.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
         [HttpPost]
-        public ActionResult AddAddress(Address model)
+        public ActionResult Create(Address model)
         {
             UserAddress junction = new UserAddress();
             ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User);
