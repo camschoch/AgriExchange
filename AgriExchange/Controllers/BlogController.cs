@@ -1,4 +1,5 @@
 ﻿using AgriExchange.Models;
+using AgriExchange.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
+            BlogViewModel model = new BlogViewModel();
+            model.
             return View();
         }
         public ActionResult Create()
@@ -31,7 +34,7 @@ namespace AgriExchange.Controllers
             SetBlogTags(model);
             return RedirectToAction("index");
         }
-
+        
         private void SetBlogTags(BlogPost model)
         {
             string[] tags = model.Tags.Replace(", ", "-").Replace(",", "-").Split('-');
