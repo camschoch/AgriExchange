@@ -16,6 +16,7 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult Create()
@@ -31,7 +32,7 @@ namespace AgriExchange.Controllers
             SetBlogTags(model);
             return RedirectToAction("index");
         }
-
+        
         private void SetBlogTags(BlogPost model)
         {
             string[] tags = model.Tags.Replace(", ", "-").Replace(",", "-").Split('-');
