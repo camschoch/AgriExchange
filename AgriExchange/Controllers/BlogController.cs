@@ -17,7 +17,7 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
-            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User);
+            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
             BlogViewModel model = new BlogViewModel();
             model.User = user;
             model.Blogs = (from data in context.BlogPosts.Include("User") where data.User.Id == user.Id select data).ToList();
@@ -74,7 +74,7 @@ namespace AgriExchange.Controllers
         [HttpPost]
         public ActionResult Create(BlogPost model)
         {
-            model.User = StaticClasses.UserRetriever.RetrieveUser(User);
+            model.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
             model.DatePosted = DateTime.Now;
             context.BlogPosts.Add(model);
             context.SaveChanges();
