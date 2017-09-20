@@ -273,6 +273,14 @@
     <Compile Include="Migrations\201709201522503_added tables for cities, states, and zip codes.Designer.cs">
       <DependentUpon>201709201522503_added tables for cities, states, and zip codes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709201604168_added lattitude and longitude to address table.cs" />
+    <Compile Include="Migrations\201709201604168_added lattitude and longitude to address table.Designer.cs">
+      <DependentUpon>201709201604168_added lattitude and longitude to address table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs" />
+    <Compile Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.Designer.cs">
+      <DependentUpon>201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -298,6 +306,7 @@
     <Compile Include="Models\UserBadges.cs" />
     <Compile Include="Models\VendorApplications.cs" />
     <Compile Include="Models\ViewModels\AdminVendorViewModel.cs" />
+    <Compile Include="Models\ViewModels\BlogViewModel.cs" />
     <Compile Include="Models\ViewModels\GardenerIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -377,6 +386,7 @@
     <Content Include="Views\Vendor\SubmitApplication.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Address\Create.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,6 +445,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709201522503_added tables for cities, states, and zip codes.resx">
       <DependentUpon>201709201522503_added tables for cities, states, and zip codes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201604168_added lattitude and longitude to address table.resx">
+      <DependentUpon>201709201604168_added lattitude and longitude to address table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.resx">
+      <DependentUpon>201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

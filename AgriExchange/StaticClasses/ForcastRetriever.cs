@@ -14,7 +14,7 @@ namespace AgriExchange.StaticClasses
             ApplicationDbContext context = new ApplicationDbContext();
             DateTime today = DateTime.Now;
             string todayDate = today.Year.ToString() + "-" + today.Month.ToString() + "-" + today.Day;
-            ApplicationUser user = UserRetriever.RetrieveUser(User);
+            ApplicationUser user = UserRetriever.RetrieveUser(User, context);
             if (context.Forcasts.First().Date == todayDate && context.Forcasts.First().User.Id == user.Id)
             {
                 return context.Forcasts.ToList();
