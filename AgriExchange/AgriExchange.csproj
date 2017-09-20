@@ -376,6 +376,7 @@
     <Content Include="Views\Vendor\SubmitApplication.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Address\Create.cshtml" />
+    <Content Include="Views\Vendor\ViewVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
