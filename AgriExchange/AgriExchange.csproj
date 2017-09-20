@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApiCallController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -267,6 +268,10 @@
     <Compile Include="Migrations\201709201410108_added tag string to blog post.cs" />
     <Compile Include="Migrations\201709201410108_added tag string to blog post.Designer.cs">
       <DependentUpon>201709201410108_added tag string to blog post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709201522503_added tables for cities, states, and zip codes.cs" />
+    <Compile Include="Migrations\201709201522503_added tables for cities, states, and zip codes.Designer.cs">
+      <DependentUpon>201709201522503_added tables for cities, states, and zip codes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -370,6 +375,7 @@
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Vendor\SubmitApplication.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709201410108_added tag string to blog post.resx">
       <DependentUpon>201709201410108_added tag string to blog post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201522503_added tables for cities, states, and zip codes.resx">
+      <DependentUpon>201709201522503_added tables for cities, states, and zip codes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
