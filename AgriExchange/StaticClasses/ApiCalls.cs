@@ -74,42 +74,45 @@ namespace AgriExchange.StaticClasses
             }
             for (int i = 0; i < 5; i++)
             {
-                //  WHERE THE EXCEPTION IS BEING THROWN
                 try
                 {
                     var day = (from data in context.Forcasts where data.ID == i + 1 select data).First();
                     day.Date = tempHold[i].validDate;
                     if (i == 0)
                     {
+                        day.Date = DayOne[0].validDate;
                         day.HighTemp = float.Parse(DayOne[0].value);
                         day.LowTemp = float.Parse(DayOne[1].value);
-                        day.Percipitation = (float)int.Parse(DayOne[3].value);
+                        day.Percipitation = float.Parse(DayOne[2].value);
                     }
                     else if (i == 1)
                     {
-                        day.HighTemp = (float)int.Parse(DayTwo[0].value);
-                        day.LowTemp = (float)int.Parse(DayTwo[1].value);
-                        day.Percipitation = (float)int.Parse(DayTwo[3].value);
+                        day.Date = DayTwo[0].validDate;
+                        day.HighTemp = float.Parse(DayTwo[0].value);
+                        day.LowTemp = float.Parse(DayTwo[1].value);
+                        day.Percipitation = float.Parse(DayTwo[2].value);
                     }
                     else if (i == 2)
                     {
-                        day.HighTemp = (float)int.Parse(DayThree[0].value);
-                        day.LowTemp = (float)int.Parse(DayThree[1].value);
-                        day.Percipitation = (float)int.Parse(DayThree[3].value);
+                        day.Date = DayThree[0].validDate;
+                        day.HighTemp = float.Parse(DayThree[0].value);
+                        day.LowTemp = float.Parse(DayThree[1].value);
+                        day.Percipitation = float.Parse(DayThree[2].value);
                     }
                     else if (i == 3)
                     {
-                        day.HighTemp = (float)int.Parse(DayFour[0].value);
-                        day.LowTemp = (float)int.Parse(DayFour[1].value);
-                        day.Percipitation = (float)int.Parse(DayFour[3].value);
+                        day.Date = DayFour[0].validDate;
+                        day.HighTemp = float.Parse(DayFour[0].value);
+                        day.LowTemp = float.Parse(DayFour[1].value);
+                        day.Percipitation = float.Parse(DayFour[2].value);
                     }
                     else if (i == 4)
                     {
-                        day.HighTemp = (float)int.Parse(DayFive[0].value);
-                        day.LowTemp = (float)int.Parse(DayFive[1].value);
-                        day.Percipitation = (float)int.Parse(DayFive[3].value);
+                        day.Date = DayFive[0].validDate;
+                        day.HighTemp = float.Parse(DayFive[0].value);
+                        day.LowTemp = float.Parse(DayFive[1].value);
+                        day.Percipitation = float.Parse(DayFive[2].value);
                     }
-                    context.Forcasts.Add(day);
                     context.SaveChanges();
                 }
                 catch
@@ -141,9 +144,7 @@ namespace AgriExchange.StaticClasses
                 {
                     var hold = item;
                 }
-
             }
         }
-        //possibly make the curl request return an http request may get rid of this class
     }
 }

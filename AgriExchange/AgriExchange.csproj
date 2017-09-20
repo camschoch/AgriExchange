@@ -375,10 +375,10 @@
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Vendor\SubmitApplication.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Address\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
