@@ -66,11 +66,12 @@ namespace AgriExchange.Controllers
             }
             return comments;
         }
-
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Create(BlogPost model)
         {
             model.User = StaticClasses.UserRetriever.RetrieveUser(User);
