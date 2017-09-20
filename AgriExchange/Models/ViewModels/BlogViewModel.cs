@@ -14,6 +14,7 @@ namespace AgriExchange.Models.ViewModels
         public List<Comment> Comments { get; set; }
         public List<CommentLikes> CommentLikes { get; set; }
         public List<ApplicationUser> Users { get; set; }
+        public Comment Comment { get; set; }
         public BlogViewModel()
         {
             Blogs = new List<BlogPost>();

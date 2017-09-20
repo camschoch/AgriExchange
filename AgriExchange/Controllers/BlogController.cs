@@ -96,7 +96,7 @@ namespace AgriExchange.Controllers
         private void GetBlogTag(BlogPost model, string tag)
         {
             BlogTags blogTag = new BlogTags();
-            blogTag.Blog = (from data in context.BlogPosts.Include("User") where data.Title == model.Title && data.User == model.User && data.DatePosted == model.DatePosted select data).First();
+            blogTag.Blog = model;
             blogTag.Tag = GetTag(tag);
             List<BlogTags> tags = (from data in context.BlogTags.Include("Blog").Include("Tag") where data.Blog.ID == blogTag.Blog.ID && data.Tag.ID == blogTag.Tag.ID select data).ToList();
             if(tags.Count > 0)
