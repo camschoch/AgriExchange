@@ -277,6 +277,10 @@
     <Compile Include="Migrations\201709201604168_added lattitude and longitude to address table.Designer.cs">
       <DependentUpon>201709201604168_added lattitude and longitude to address table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs" />
+    <Compile Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.Designer.cs">
+      <DependentUpon>201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -442,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709201604168_added lattitude and longitude to address table.resx">
       <DependentUpon>201709201604168_added lattitude and longitude to address table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.resx">
+      <DependentUpon>201709201645246_fixed spelling error %27Uset%27 to %27User%27 in bloglikes table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

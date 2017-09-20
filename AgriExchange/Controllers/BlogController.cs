@@ -17,10 +17,56 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
+            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User);
             BlogViewModel model = new BlogViewModel();
-            model.
-            return View();
+            model.Blogs = (from data in context.BlogPosts.Include("User") where data.User.Id == user.Id select data).ToList();
+            model.Comments = GetComments(model.Blogs);
+            model.BlogLikes = GetBlogLikes(model.Blogs);
+            model.CommentLikes = GetCommentLikes(model.Comments);
+            model.Tags = GetBlogTags(model.Blogs);
+            return View(model);
         }
+
+        private List<BlogTags> GetBlogTags(List<BlogPost> blogs)
+        {
+            List<BlogTags> tags = new List<BlogTags>();
+            foreach (BlogPost blog in blogs)
+            {
+                tags.AddRange((from data in context.BlogTags.Include("Blog").Include("Tag") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return tags;
+        }
+
+        private List<CommentLikes> GetCommentLikes(List<Comment> comments)
+        {
+            List<CommentLikes> likes = new List<CommentLikes>();
+            foreach (Comment comment in comments)
+            {
+                likes.AddRange((from data in context.CommentLikes.Include("Comment").Include("User") where data.Comment.ID == comment.ID select data).ToList());
+            }
+            return likes;
+        }
+
+        private List<BlogLikes> GetBlogLikes(List<BlogPost> blogs)
+        {
+            List<BlogLikes> likes = new List<BlogLikes>();
+            foreach(BlogPost blog in blogs)
+            {
+                likes.AddRange((from data in context.BlogLikes.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return likes;
+        }
+
+        private List<Comment> GetComments(List<BlogPost> blogs)
+        {
+            List<Comment> comments = new List<Comment>();
+            foreach(BlogPost blog in blogs)
+            {
+                comments.AddRange((from data in context.Comments.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return comments;
+        }
+
         public ActionResult Create()
         {
             return View();
