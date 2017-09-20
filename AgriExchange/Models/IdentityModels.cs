@@ -31,6 +31,9 @@ namespace AgriExchange.Models
             return new ApplicationDbContext();
         }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Cities> Cities { get; set; }
+        public DbSet<States> States { get; set; }
+        public DbSet<ZipCode> Zips { get; set; }
         public DbSet<Badge> Badges { get; set; }
         public DbSet<CropEntry> CropEntries { get; set; }
         public DbSet<UserBadges> UserBadges { get; set; }
