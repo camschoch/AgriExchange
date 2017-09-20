@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -46,5 +47,6 @@ namespace AgriExchange.Models
         public DbSet<VendorApplications> VendorApplications { get; set; }
         public DbSet<BlogTags> BlogTags { get; set; }
         public DbSet<Forcast> Forcasts { get; set; }
+        
     }
 }
