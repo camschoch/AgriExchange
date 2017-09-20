@@ -81,8 +81,8 @@ namespace AgriExchange.StaticClasses
                     day.Date = tempHold[i].validDate;
                     if (i == 0)
                     {
-                        day.HighTemp = (float)int.Parse(DayOne[0].value);
-                        day.LowTemp = (float)int.Parse(DayOne[1].value);
+                        day.HighTemp = float.Parse(DayOne[0].value);
+                        day.LowTemp = float.Parse(DayOne[1].value);
                         day.Percipitation = (float)int.Parse(DayOne[3].value);
                     }
                     else if (i == 1)
