@@ -20,11 +20,13 @@ namespace AgriExchange.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(int ID)
+        public ActionResult Create(Comment comment)
         {
-            BlogPost blog = (from data in context.BlogPosts where data.ID == ID select data).First();
-                
-            return RedirectToAction("Index", "Blog", new { id = ID});
+            comment.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            comment.PostDate = DateTime.Now;
+            context.Comments.Add(comment);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Blog");
         }
     }
 }
