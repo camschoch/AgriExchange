@@ -21,6 +21,10 @@ namespace AgriExchange.StaticClasses
             }
             else
             {
+                string userName = User.Identity.Name;
+                var geoLocation = ApiCalls.GeoLocationApi(userName, context);
+                string paramater = "/" + geoLocation[0] + "/" + geoLocation[1];
+                ApiCalls.WeatherApi(paramater, User);
                 //make api call to update DB
                 return context.Forcasts.ToList();
             }

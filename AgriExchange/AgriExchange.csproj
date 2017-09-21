@@ -296,6 +296,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ApiDataClasses\FarmersAlmanacData.cs" />
     <Compile Include="Models\ApiDataClasses\GeoLocationData.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Block.cs" />
@@ -323,7 +324,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StaticClasses\ApiCalls.cs" />
+    <Compile Include="StaticClasses\ConvertAddressToSearch.cs" />
     <Compile Include="StaticClasses\ForcastRetriever.cs" />
+    <Compile Include="StaticClasses\GetUserZipcode.cs" />
     <Compile Include="StaticClasses\UserRetriever.cs" />
   </ItemGroup>
   <ItemGroup>
