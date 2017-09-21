@@ -29,6 +29,24 @@ namespace AgriExchange.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Blog");
         }
-
+        public ActionResult Report(int ID)
+        {
+            Report report = new Report();
+            report.ReportedComment = (from data in context.Comments where data.ID == ID select data).First();
+            return View(report);
+        }
+        [HttpPost]
+        public ActionResult Report(Report report)
+        {
+            report.ReportingUser = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            report.ReportedComment = (from data in context.Comments where data.ID == report.ReportedComment.ID select data).First();
+            context.Reports.Add(report);
+            context.SaveChanges();
+            return RedirectToAction("SuccessfulReport");
+        }
+        public ActionResult SuccessfulReport()
+        {
+            return View();
+        }
     }
 }

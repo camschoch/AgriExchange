@@ -401,10 +401,10 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Report.cshtml" />
     <Content Include="Views\Blog\SuccessfulReport.cshtml" />
+    <Content Include="Views\Comment\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
