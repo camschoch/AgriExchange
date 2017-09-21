@@ -81,7 +81,25 @@ namespace AgriExchange.Controllers
             SetBlogTags(model);
             return RedirectToAction("index");
         }
-        
+        public ActionResult Report(int ID)
+        {
+            Report report = new Report();
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == ID select data).First();
+            return View(report);
+        }
+        [HttpPost]
+        public ActionResult Report(Report report)
+        {
+            report.ReportingUser = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == report.ReportedBlogPost.ID select data).First();
+            context.Reports.Add(report);
+            context.SaveChanges();
+            return RedirectToAction("SuccessfulReport");
+        }
+        public ActionResult SuccessfulReport()
+        {
+            return View();
+        }
         private void SetBlogTags(BlogPost model)
         {
             string[] tags = model.Tags.Replace(", ", "-").Replace(",", "-").Split('-');

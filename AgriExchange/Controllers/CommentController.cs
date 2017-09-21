@@ -29,5 +29,6 @@ namespace AgriExchange.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Blog");
         }
+
     }
 }
