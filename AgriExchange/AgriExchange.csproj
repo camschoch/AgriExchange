@@ -294,6 +294,10 @@
     <Compile Include="Migrations\201709211304232_changed attribute on post date in comments.Designer.cs">
       <DependentUpon>201709211304232_changed attribute on post date in comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709211932370_added zone to address table.cs" />
+    <Compile Include="Migrations\201709211932370_added zone to address table.Designer.cs">
+      <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -481,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709211304232_changed attribute on post date in comments.resx">
       <DependentUpon>201709211304232_changed attribute on post date in comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211932370_added zone to address table.resx">
+      <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

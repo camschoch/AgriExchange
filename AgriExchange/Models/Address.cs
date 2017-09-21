@@ -14,6 +14,7 @@ namespace AgriExchange.Models
             public string addressLine { get; set; }
             public float Lattitude { get; set; }
             public float Longitude { get; set; }
+            public string Zone { get; set; }
             public Cities City { get; set; }
             public ZipCode Zip { get; set; }
 
