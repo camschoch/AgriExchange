@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AgriExchange.Models
 {
-    public class Report
+    public partial class Report
     {
         public int ID { get; set; }
         public ApplicationUser ReportingUser { get; set; }
