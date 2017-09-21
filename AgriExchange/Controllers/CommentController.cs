@@ -23,6 +23,7 @@ namespace AgriExchange.Controllers
         public ActionResult Create(Comment comment)
         {
             comment.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            comment.Blog = (from data in context.BlogPosts where data.ID == comment.Blog.ID select data).First();
             comment.PostDate = DateTime.Now;
             context.Comments.Add(comment);
             context.SaveChanges();

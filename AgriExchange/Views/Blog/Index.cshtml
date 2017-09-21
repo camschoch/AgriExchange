@@ -69,7 +69,7 @@
                     @Html.TextAreaFor(m => m.Comment.Text, new { @class = "form-control" })
                 </div>
             </div>
-            @Html.HiddenFor(m => m.Comment.Blog.ID, new { value = Model.Blogs[i].ID })
+            @Html.Hidden("comment.Blog.ID", Model.Blogs[i].ID)
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-default" value="Comment" />
