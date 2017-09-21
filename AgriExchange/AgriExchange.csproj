@@ -402,6 +402,7 @@
     <Content Include="Views\Blog\Report.cshtml" />
     <Content Include="Views\Blog\SuccessfulReport.cshtml" />
     <Content Include="Views\Comment\Report.cshtml" />
+    <Content Include="Views\Comment\SuccessfulReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
