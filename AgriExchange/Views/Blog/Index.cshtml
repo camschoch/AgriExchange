@@ -50,11 +50,11 @@
                     </p>
                     @if ((from data in Model.CommentLikes where data.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID select data.User.Id).Contains(Model.User.Id))
                     {
-                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Ajax.ActionLink( "Unlike", "PutInBin", "Capture", new {   ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID}, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSucces" })</p>
+                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Ajax.ActionLink( "Unlike", "Like", "Comment", new {   id = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID}, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSucces" })</p>
                     }
                     else
                     {
-                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Html.ActionLink("Like", "Like", "Comment", new { ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID })</p>
+                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Ajax.ActionLink("Like", "Like", "Comment", new { id = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSuccess" })</p>
                     }
                     <p>@Html.ActionLink("Report", "Report", "Comment", new { ID = Model.Blogs[i].ID }, null)</p>
                 </div>

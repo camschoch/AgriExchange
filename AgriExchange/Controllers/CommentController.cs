@@ -44,9 +44,28 @@ namespace AgriExchange.Controllers
             context.SaveChanges();
             return RedirectToAction("SuccessfulReport");
         }
+
         public ActionResult SuccessfulReport()
         {
             return View();
+        }
+        public ActionResult Like(int id)
+        {
+            CommentLikes like = new CommentLikes();
+            like.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            like.Comment = (from data in context.Comments where data.ID == id select data).First();
+            var likes = (from data in context.BlogLikes where data.Blog.ID == like.Comment.ID && data.User.Id == like.User.Id select data).ToList();
+            if (likes.Count > 0)
+            {
+                context.BlogLikes.Remove(likes[0]);
+                context.SaveChanges();
+            }
+            else
+            {
+                context.CommentLikes.Add(like);
+                context.SaveChanges();
+            }
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

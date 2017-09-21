@@ -117,7 +117,7 @@ namespace AgriExchange.Controllers
                 context.BlogLikes.Add(like);
                 context.SaveChanges();
             }
-            return new EmptyResult();
+            return Redirect(Request.UrlReferrer.ToString());
         }
         private void SetBlogTags(BlogPost model)
         {
