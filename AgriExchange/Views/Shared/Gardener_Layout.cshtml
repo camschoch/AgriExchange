@@ -29,6 +29,17 @@
                 <li>@Html.ActionLink("Test", "FarmersAlmanacApi", "ApiCall")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
+            <div>
+                @using (Html.BeginForm("Search", "Search"))
+            {
+                @Html.TextBox("SearchParameter")
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Submit" />
+                    </div>
+                </div>
+            }
+        </div>
             @Html.Partial("_LoginPartial")
         </div>
     </div>
