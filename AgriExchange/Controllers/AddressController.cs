@@ -26,7 +26,7 @@ namespace AgriExchange.Controllers
         public ActionResult Create(Address model)
         {
             UserAddress junction = new UserAddress();
-            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User);
+            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
             junction.Address = GetAddress(model);
             junction.User = user;
             var existingJunction = (from data in context.UserAddresses where data.Address.ID == junction.Address.ID && data.User.Id == junction.User.Id select data).ToList();

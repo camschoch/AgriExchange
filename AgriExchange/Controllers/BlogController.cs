@@ -17,24 +17,89 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
+            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
             BlogViewModel model = new BlogViewModel();
-            model.
-            return View();
+            model.User = user;
+            model.Blogs = (from data in context.BlogPosts.Include("User") where data.User.Id == user.Id select data).ToList();
+            model.Comments = GetComments(model.Blogs);
+            model.BlogLikes = GetBlogLikes(model.Blogs);
+            model.CommentLikes = GetCommentLikes(model.Comments);
+            model.Tags = GetBlogTags(model.Blogs);
+            return View(model);
         }
+        private List<BlogTags> GetBlogTags(List<BlogPost> blogs)
+        {
+            List<BlogTags> tags = new List<BlogTags>();
+            foreach (BlogPost blog in blogs)
+            {
+                tags.AddRange((from data in context.BlogTags.Include("Blog").Include("Tag") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return tags;
+        }
+
+        private List<CommentLikes> GetCommentLikes(List<Comment> comments)
+        {
+            List<CommentLikes> likes = new List<CommentLikes>();
+            foreach (Comment comment in comments)
+            {
+                likes.AddRange((from data in context.CommentLikes.Include("Comment").Include("User") where data.Comment.ID == comment.ID select data).ToList());
+            }
+            return likes;
+        }
+
+        private List<BlogLikes> GetBlogLikes(List<BlogPost> blogs)
+        {
+            List<BlogLikes> likes = new List<BlogLikes>();
+            foreach(BlogPost blog in blogs)
+            {
+                likes.AddRange((from data in context.BlogLikes.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return likes;
+        }
+
+        private List<Comment> GetComments(List<BlogPost> blogs)
+        {
+            List<Comment> comments = new List<Comment>();
+            foreach(BlogPost blog in blogs)
+            {
+                comments.AddRange((from data in context.Comments.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
+            }
+            return comments;
+        }
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Create(BlogPost model)
         {
-            model.User = StaticClasses.UserRetriever.RetrieveUser(User);
+            model.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
             model.DatePosted = DateTime.Now;
             context.BlogPosts.Add(model);
             context.SaveChanges();
             SetBlogTags(model);
             return RedirectToAction("index");
         }
-        
+        public ActionResult Report(int ID)
+        {
+            Report report = new Report();
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == ID select data).First();
+            return View(report);
+        }
+        [HttpPost]
+        public ActionResult Report(Report report)
+        {
+            report.ReportingUser = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == report.ReportedBlogPost.ID select data).First();
+            context.Reports.Add(report);
+            context.SaveChanges();
+            return RedirectToAction("SuccessfulReport");
+        }
+        public ActionResult SuccessfulReport()
+        {
+            return View();
+        }
         private void SetBlogTags(BlogPost model)
         {
             string[] tags = model.Tags.Replace(", ", "-").Replace(",", "-").Split('-');
@@ -49,7 +114,7 @@ namespace AgriExchange.Controllers
         private void GetBlogTag(BlogPost model, string tag)
         {
             BlogTags blogTag = new BlogTags();
-            blogTag.Blog = (from data in context.BlogPosts.Include("User") where data.Title == model.Title && data.User == model.User && data.DatePosted == model.DatePosted select data).First();
+            blogTag.Blog = model;
             blogTag.Tag = GetTag(tag);
             List<BlogTags> tags = (from data in context.BlogTags.Include("Blog").Include("Tag") where data.Blog.ID == blogTag.Blog.ID && data.Tag.ID == blogTag.Tag.ID select data).ToList();
             if(tags.Count > 0)
