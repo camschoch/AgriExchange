@@ -26,11 +26,11 @@
             </p>
             @if ((from data in Model.BlogLikes where data.Blog.ID == Model.Blogs[i].ID select data.User.Id).Contains(Model.User.Id))
             {
-            <p>@((Model.BlogLikes.Where(y => y.Blog.ID == Model.Blogs[i].ID).ToList().Count).ToString()) @Html.ActionLink("Unlike", "Like", "Blog", new { ID = Model.Blogs[i].ID })</p>
+            <p>@((from data in Model.BlogLikes where data.Blog.ID == Model.Blogs[i].ID select data).ToList().Count) @Ajax.ActionLink("Unlike", "Like", "Blog", new { id = Model.Blogs[i].ID }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSucces" })</p>
             }
             else
             {
-                <p>@((Model.BlogLikes.Where(y => y.Blog.ID == Model.Blogs[i].ID).ToList().Count).ToString()) @Html.ActionLink("Like", "Like", "Blog", new { ID = Model.Blogs[i].ID })</p>
+                <p>@((from data in Model.BlogLikes where data.Blog.ID == Model.Blogs[i].ID select data).ToList().Count) @Ajax.ActionLink("Like", "Like", "Blog", new { id = Model.Blogs[i].ID }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSucces" })</p>
             }
             <p>@Html.ActionLink("Report", "Report", "Blog", new { ID = Model.Blogs[i].ID }, null)</p>
         </div>
@@ -50,11 +50,11 @@
                     </p>
                     @if ((from data in Model.CommentLikes where data.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID select data.User.Id).Contains(Model.User.Id))
                     {
-                        <p>@((Model.CommentLikes.Where(y => y.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID).ToList().Count).ToString()) @Html.ActionLink("Unlike", "Like", "Comment", new { ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID })</p>
+                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Ajax.ActionLink( "Unlike", "Like", "Comment", new {   id = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID}, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSucces" })</p>
                     }
                     else
                     {
-                        <p>@((Model.CommentLikes.Where(y => y.Comment.ID == Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID).ToList().Count).ToString()) @Html.ActionLink("Like", "Like", "Comment", new { ID = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID })</p>
+                        <p>@((from data in Model.CommentLikes where data.Comment.ID == (from item in Model.Comments where item.Blog.ID == Model.Blogs[i].ID select item).ToList()[j].ID select data).ToList().Count) @Ajax.ActionLink("Like", "Like", "Comment", new { id = Model.Comments.Where(z => z.Blog.ID == Model.Blogs[i].ID).ToList()[j].ID }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onLikeSuccess" })</p>
                     }
                     <p>@Html.ActionLink("Report", "Report", "Comment", new { ID = Model.Blogs[i].ID }, null)</p>
                 </div>
@@ -79,3 +79,12 @@
         }
     }
 }
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+<script>
+
+    var onLikeSuccess = function(result) {
+        window.location.reload(true);
+    };
+
+ </script>
