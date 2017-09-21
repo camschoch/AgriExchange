@@ -298,6 +298,10 @@
     <Compile Include="Migrations\201709211932370_added zone to address table.Designer.cs">
       <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709212250498_BlockedUntil.cs" />
+    <Compile Include="Migrations\201709212250498_BlockedUntil.Designer.cs">
+      <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -488,6 +492,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709211932370_added zone to address table.resx">
       <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709212250498_BlockedUntil.resx">
+      <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,5 +13,14 @@ namespace AgriExchange.Models
         public string Text { get; set; }
         public string Tags { get; set; }
         public DateTime DatePosted { get; set; }
+
+        public static bool AllowedToPost(String UserID)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            var user = dbContext.Users.FirstOrDefault(x => x.Id == UserID);
+            if (user == null)
+                return false;
+            return (DateTime.Now >= user.BlockedUntil);
+        }
     }
 }
