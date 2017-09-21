@@ -23,7 +23,7 @@ namespace AgriExchange.StaticClasses
             paramaters.Add("daily-high-temperature");
             paramaters.Add("daily-low-temperature");
             paramaters.Add("daily-precipitation");
-            List<seriesItem> tempHold = new List<seriesItem>();
+            List<seriesItem> allData = new List<seriesItem>();
             List<seriesItem> DayOne = new List<seriesItem>();
             List<seriesItem> DayTwo = new List<seriesItem>();
             List<seriesItem> DayThree = new List<seriesItem>();
@@ -45,30 +45,30 @@ namespace AgriExchange.StaticClasses
                     var listTempData = response.Data.series;
                     foreach (var item in listTempData)
                     {
-                        tempHold.Add(item);
+                        allData.Add(item);
                     }
                 }
             }
-            foreach (var item in tempHold)
+            foreach (var item in allData)
             {
-                if (item.validDate == tempHold[0].validDate)
+                if (item.validDate == allData[0].validDate)
                 {
                     DayOne.Add(item);
                 }
-                else if (item.validDate == tempHold[1].validDate)
+                else if (item.validDate == allData[1].validDate)
                 {
                     DayTwo.Add(item);
                 }
-                else if (item.validDate == tempHold[2].validDate)
+                else if (item.validDate == allData[2].validDate)
                 {
                     DayThree.Add(item);
                 }
-                else if (item.validDate == tempHold[3].validDate)
+                else if (item.validDate == allData[3].validDate)
                 {
                     DayFour.Add(item);
                 }
 
-                else if (item.validDate == tempHold[4].validDate)
+                else if (item.validDate == allData[4].validDate)
                 {
                     DayFive.Add(item);
                 }
@@ -78,7 +78,7 @@ namespace AgriExchange.StaticClasses
                 try
                 {
                     var day = (from data in context.Forcasts where data.ID == i + 1 select data).First();
-                    day.Date = tempHold[i].validDate;
+                    day.Date = allData[i].validDate;
                     if (i == 0)
                     {
                         day.Date = DayOne[0].validDate;
@@ -120,9 +120,10 @@ namespace AgriExchange.StaticClasses
                 {
                     Forcast forcast = new Forcast();
                     forcast.ID = i + 1;
-                    forcast.Date = tempHold[i].validDate;
+                    forcast.Date = allData[i].validDate;
                     context.Forcasts.Add(forcast);
                     context.SaveChanges();
+                    WeatherApi(hourlyTemp, location);
                 }
             }
         }
