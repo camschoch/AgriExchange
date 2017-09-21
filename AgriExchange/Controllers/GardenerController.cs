@@ -23,5 +23,9 @@ namespace AgriExchange.Controllers
             model.Forcast = ForcastRetriever.GetForcast(User);
             return View();
         }
+        public ActionResult Block()
+        {
+            return View();
+        }
     }
 }
