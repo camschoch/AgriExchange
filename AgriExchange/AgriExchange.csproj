@@ -382,6 +382,7 @@
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Vendor\ViewVendor.cshtml" />
+    <Content Include="Views\Account\ApplicationUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
