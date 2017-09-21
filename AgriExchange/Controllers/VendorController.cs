@@ -76,11 +76,5 @@ namespace AgriExchange.Controllers
             return View(model);
             
         }
-       
-        // public ActionResult BlockUser
-        
-
-
-
     }
 }
