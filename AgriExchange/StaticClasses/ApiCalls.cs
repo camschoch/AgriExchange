@@ -16,7 +16,7 @@ namespace AgriExchange.StaticClasses
     static public class ApiCalls
     {
 
-        public static void WeatherApi(string hourlyTemp, string location)
+        public static void WeatherApi(string location, System.Security.Principal.IPrincipal User)
         {
             ApplicationDbContext context = new ApplicationDbContext();
             List<string> paramaters = new List<string>();
@@ -85,6 +85,7 @@ namespace AgriExchange.StaticClasses
                         day.HighTemp = float.Parse(DayOne[0].value);
                         day.LowTemp = float.Parse(DayOne[1].value);
                         day.Percipitation = float.Parse(DayOne[2].value);
+                        day.User = UserRetriever.RetrieveUser(User, context);
                     }
                     else if (i == 1)
                     {
@@ -92,6 +93,7 @@ namespace AgriExchange.StaticClasses
                         day.HighTemp = float.Parse(DayTwo[0].value);
                         day.LowTemp = float.Parse(DayTwo[1].value);
                         day.Percipitation = float.Parse(DayTwo[2].value);
+                        day.User = UserRetriever.RetrieveUser(User, context);
                     }
                     else if (i == 2)
                     {
@@ -99,6 +101,7 @@ namespace AgriExchange.StaticClasses
                         day.HighTemp = float.Parse(DayThree[0].value);
                         day.LowTemp = float.Parse(DayThree[1].value);
                         day.Percipitation = float.Parse(DayThree[2].value);
+                        day.User = UserRetriever.RetrieveUser(User, context);
                     }
                     else if (i == 3)
                     {
@@ -106,6 +109,7 @@ namespace AgriExchange.StaticClasses
                         day.HighTemp = float.Parse(DayFour[0].value);
                         day.LowTemp = float.Parse(DayFour[1].value);
                         day.Percipitation = float.Parse(DayFour[2].value);
+                        day.User = UserRetriever.RetrieveUser(User, context);
                     }
                     else if (i == 4)
                     {
@@ -113,6 +117,7 @@ namespace AgriExchange.StaticClasses
                         day.HighTemp = float.Parse(DayFive[0].value);
                         day.LowTemp = float.Parse(DayFive[1].value);
                         day.Percipitation = float.Parse(DayFive[2].value);
+                        day.User = UserRetriever.RetrieveUser(User, context);
                     }
                     context.SaveChanges();
                 }
@@ -123,14 +128,13 @@ namespace AgriExchange.StaticClasses
                     forcast.Date = allData[i].validDate;
                     context.Forcasts.Add(forcast);
                     context.SaveChanges();
-                    WeatherApi(hourlyTemp, location);
                 }
             }
         }
         
     
 
-        public static void FruitApi(string search, string typeSearch)
+        public static FruitData FruitApi(string search, string typeSearch)
         {
             var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?"+ typeSearch + search);
             var request = new RestRequest(Method.GET);
@@ -146,12 +150,14 @@ namespace AgriExchange.StaticClasses
                 {
                     var hold = item;
                 }
+                return convertedData;
             }
+            return null;
         }
 
-        public static void GeoLocationApi(string convertedAddress)
-        {            
-
+        public static List<string> GeoLocationApi(string convertedAddress, ApplicationDbContext context)
+        {
+            List<string> test = new List<string>();
             var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "d0687862-1bdc-4966-e25f-ad919249e058");
@@ -163,7 +169,29 @@ namespace AgriExchange.StaticClasses
             {
                 var lattitude = response.Data.results[0].geometry[0].location[0].lat;
                 var longitude = response.Data.results[0].geometry[0].location[0].lng;
+                test.Add(lattitude);
+                test.Add(longitude);
+                return test;
             }
+            return null;
+        }
+
+
+        public static List<resultsFarmerItem> FarmersMarketApi(string userZip)
+        {
+            var client = new RestClient("http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("postman-token", "22b81d7d-601c-3882-0390-5723fd87b6d2");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+            IRestResponse<FarmersAlmanacData> response = client.Execute<FarmersAlmanacData>(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var results = response.Data.results;
+                return results;
+            }
+            return null;
         }
     }
 }
