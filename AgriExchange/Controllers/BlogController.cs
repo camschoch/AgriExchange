@@ -81,7 +81,25 @@ namespace AgriExchange.Controllers
             SetBlogTags(model);
             return RedirectToAction("index");
         }
-        
+        public ActionResult Report(int ID)
+        {
+            Report report = new Report();
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == ID select data).First();
+            return View(report);
+        }
+        [HttpPost]
+        public ActionResult Report(Report report)
+        {
+            report.ReportingUser = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            report.ReportedBlogPost = (from data in context.BlogPosts where data.ID == report.ReportedBlogPost.ID select data).First();
+            context.Reports.Add(report);
+            context.SaveChanges();
+            return RedirectToAction("SuccessfulReport");
+        }
+        public ActionResult SuccessfulReport()
+        {
+            return View();
+        }
         private void SetBlogTags(BlogPost model)
         {
             string[] tags = model.Tags.Replace(", ", "-").Replace(",", "-").Split('-');
@@ -96,7 +114,7 @@ namespace AgriExchange.Controllers
         private void GetBlogTag(BlogPost model, string tag)
         {
             BlogTags blogTag = new BlogTags();
-            blogTag.Blog = (from data in context.BlogPosts.Include("User") where data.Title == model.Title && data.User == model.User && data.DatePosted == model.DatePosted select data).First();
+            blogTag.Blog = model;
             blogTag.Tag = GetTag(tag);
             List<BlogTags> tags = (from data in context.BlogTags.Include("Blog").Include("Tag") where data.Blog.ID == blogTag.Blog.ID && data.Tag.ID == blogTag.Tag.ID select data).ToList();
             if(tags.Count > 0)
