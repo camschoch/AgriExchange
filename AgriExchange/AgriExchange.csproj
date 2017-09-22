@@ -312,6 +312,10 @@
     <Compile Include="Migrations\201709221605183_added plant table.Designer.cs">
       <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221848040_added plant zone table.cs" />
+    <Compile Include="Migrations\201709221848040_added plant zone table.Designer.cs">
+      <DependentUpon>201709221848040_added plant zone table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -332,6 +336,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Plant.cs" />
+    <Compile Include="Models\PlantZone.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ApiDataClasses\FruitData.cs" />
@@ -535,6 +540,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221605183_added plant table.resx">
       <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221848040_added plant zone table.resx">
+      <DependentUpon>201709221848040_added plant zone table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
