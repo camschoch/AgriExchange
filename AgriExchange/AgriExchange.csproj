@@ -210,6 +210,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -294,6 +296,22 @@
     <Compile Include="Migrations\201709211304232_changed attribute on post date in comments.Designer.cs">
       <DependentUpon>201709211304232_changed attribute on post date in comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709211932370_added zone to address table.cs" />
+    <Compile Include="Migrations\201709211932370_added zone to address table.Designer.cs">
+      <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709212250498_BlockedUntil.cs" />
+    <Compile Include="Migrations\201709212250498_BlockedUntil.Designer.cs">
+      <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221555199_added zone tab%3be.cs" />
+    <Compile Include="Migrations\201709221555199_added zone tab%3be.Designer.cs">
+      <DependentUpon>201709221555199_added zone tab%3be.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221605183_added plant table.cs" />
+    <Compile Include="Migrations\201709221605183_added plant table.Designer.cs">
+      <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -313,10 +331,13 @@
     <Compile Include="Models\Forcast.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Plant.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ApiDataClasses\FruitData.cs" />
     <Compile Include="Models\ApiDataClasses\WeatherData.cs" />
+    <Compile Include="Models\ReportController.cs" />
+    <Compile Include="Models\ReportMetadata.cs" />
     <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Models\UserBadges.cs" />
@@ -325,13 +346,17 @@
     <Compile Include="Models\ViewModels\BlogViewModel.cs" />
     <Compile Include="Models\ViewModels\GardenerIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\MapViewModel.cs" />
+    <Compile Include="Models\ViewModels\SearchViewModel.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportController.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StaticClasses\ApiCalls.cs" />
     <Compile Include="StaticClasses\ConvertAddressToSearch.cs" />
     <Compile Include="StaticClasses\ForcastRetriever.cs" />
     <Compile Include="StaticClasses\GetUserZipcode.cs" />
     <Compile Include="StaticClasses\UserRetriever.cs" />
+    <Compile Include="Views\ReportController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -409,10 +434,26 @@
     <Content Include="Views\Blog\Report.cshtml" />
     <Content Include="Views\Blog\SuccessfulReport.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
+    <Content Include="Views\Comment\Report.cshtml" />
+    <Content Include="Views\Comment\SuccessfulReport.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Views\_ViewStart.cshtml" />
+    <Content Include="Views\Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Report\ReportCreate.cshtml" />
+    <Content Include="Views\Report\ReportEdit.cshtml" />
+    <Content Include="Views\Report\ReportEditForm.cshtml" />
+    <Content Include="Views\Report\ReportIndex.cshtml" />
+    <Content Include="Views\Report\BlockUser.cshtml" />
+    <Content Include="Views\Report\BlockUserForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -482,6 +523,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709211304232_changed attribute on post date in comments.resx">
       <DependentUpon>201709211304232_changed attribute on post date in comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211932370_added zone to address table.resx">
+      <DependentUpon>201709211932370_added zone to address table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709212250498_BlockedUntil.resx">
+      <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221555199_added zone tab%3be.resx">
+      <DependentUpon>201709221555199_added zone tab%3be.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221605183_added plant table.resx">
+      <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Ajax.Utilities;
@@ -10,6 +12,8 @@ namespace AgriExchange.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public DateTime BlockedUntil { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -50,6 +54,8 @@ namespace AgriExchange.Models
         public DbSet<VendorApplications> VendorApplications { get; set; }
         public DbSet<BlogTags> BlogTags { get; set; }
         public DbSet<Forcast> Forcasts { get; set; }
+        public DbSet<Zone> Zones { get; set; }
+        public DbSet<Plant> Plants { get; set; }
         
     }
 }

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AgriExchange.Models.Report>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type='text/css'>
+    /*設定 數字靠右*/
+    td:nth-child(4){text-align: right;}
+</style>
+<h2>Index</h2>
+<h4>Report</h4>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "ReportEdit", new { id=item.ID })
+            </td>
+            <td>
+                @Html.ActionLink("Block User", "BlockUser", new { id = item.ID })
+            </td>
+
+            <td>
+                @Html.ActionLink("View Post", "Index", "Blog", new {id = item.ID}, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportedBlogPost.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+
+        </tr>
+    }
+
+</table>

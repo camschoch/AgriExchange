@@ -15,10 +15,22 @@ namespace AgriExchange.Controllers
         {
             context = new ApplicationDbContext();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
             BlogViewModel model = new BlogViewModel();
+            if (id != null)
+            { 
+                model.User = user;
+                model.Blogs = (from data in context.BlogPosts.Include("User") where (data.ID == id) select data).ToList();
+                model.Comments = GetComments(model.Blogs);
+                model.BlogLikes = GetBlogLikes(model.Blogs);
+                model.CommentLikes = GetCommentLikes(model.Comments);
+                model.Tags = GetBlogTags(model.Blogs);
+                return View(model);
+            }
+
+            
             model.User = user;
             model.Blogs = (from data in context.BlogPosts.Include("User") where data.User.Id == user.Id select data).ToList();
             model.Comments = GetComments(model.Blogs);
@@ -27,6 +39,21 @@ namespace AgriExchange.Controllers
             model.Tags = GetBlogTags(model.Blogs);
             return View(model);
         }
+
+        public ActionResult Index(int id)
+        {
+            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            BlogViewModel model = new BlogViewModel();
+            model.User = user;
+            model.Blogs = (from data in context.BlogPosts.Include("User") where (data.User.Id == user.Id && data.ID == id) select data).ToList();
+            model.Comments = GetComments(model.Blogs);
+            model.BlogLikes = GetBlogLikes(model.Blogs);
+            model.CommentLikes = GetCommentLikes(model.Comments);
+            model.Tags = GetBlogTags(model.Blogs);
+            return View(model);
+        }
+
+
         private List<BlogTags> GetBlogTags(List<BlogPost> blogs)
         {
             List<BlogTags> tags = new List<BlogTags>();
@@ -50,7 +77,7 @@ namespace AgriExchange.Controllers
         private List<BlogLikes> GetBlogLikes(List<BlogPost> blogs)
         {
             List<BlogLikes> likes = new List<BlogLikes>();
-            foreach(BlogPost blog in blogs)
+            foreach (BlogPost blog in blogs)
             {
                 likes.AddRange((from data in context.BlogLikes.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
             }
@@ -60,7 +87,7 @@ namespace AgriExchange.Controllers
         private List<Comment> GetComments(List<BlogPost> blogs)
         {
             List<Comment> comments = new List<Comment>();
-            foreach(BlogPost blog in blogs)
+            foreach (BlogPost blog in blogs)
             {
                 comments.AddRange((from data in context.Comments.Include("Blog").Include("User") where data.Blog.ID == blog.ID select data).ToList());
             }
@@ -99,6 +126,25 @@ namespace AgriExchange.Controllers
         public ActionResult SuccessfulReport()
         {
             return View();
+        }
+
+        public ActionResult Like(int id)
+        {
+            BlogLikes like = new BlogLikes();
+            like.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            like.Blog = (from data in context.BlogPosts where data.ID == id select data).First();
+            var likes = (from data in context.BlogLikes where data.Blog.ID == like.Blog.ID && data.User.Id == like.User.Id select data).ToList();
+            if(likes.Count > 0)
+            {
+                context.BlogLikes.Remove(likes[0]);
+                context.SaveChanges();
+            }
+            else
+            {
+                context.BlogLikes.Add(like);
+                context.SaveChanges();
+            }
+            return Redirect(Request.UrlReferrer.ToString());
         }
         private void SetBlogTags(BlogPost model)
         {

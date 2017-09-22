@@ -29,11 +29,11 @@ namespace AgriExchange.Controllers
             ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
             junction.Address = GetAddress(model);
             junction.User = user;
-            var existingJunction = (from data in context.UserAddresses where data.Address.ID == junction.Address.ID && data.User.Id == junction.User.Id select data).ToList();
+            var existingJunction = (from data in context.UserAddresses where data.User.Id == junction.User.Id select data).ToList();
             if (existingJunction.Count > 0)
             {
-                context.UserAddresses.Add(existingJunction[0]);
-                context.SaveChanges();
+                existingJunction[0].Address = junction.Address;
+                context.SaveChanges(); 
             }
             else
             {

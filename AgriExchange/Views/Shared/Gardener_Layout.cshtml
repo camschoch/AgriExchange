@@ -23,6 +23,7 @@
             </button>
             @Html.ActionLink("Gardener", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
+        @Html.Partial("_LoginPartial")
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -30,7 +31,12 @@
                 <li>@Html.ActionLink("test", "FarmersMarketApi", "ApiCall")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
-            @Html.Partial("_LoginPartial")
+                @using (Html.BeginForm("Search", "Search"))
+            {
+                @Html.TextBox("SearchParameter")
+                        <input type="submit" class="btn btn-default" value="Submit" />
+            }
+           
         </div>
     </div>
 </div>

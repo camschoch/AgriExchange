@@ -1,0 +1,9 @@
+﻿@model AgriExchange.Models.ViewModels.AdminVendorViewModel
+@{
+    ViewBag.Title = "ViewVendor";
+}
+
+<h2>Vendors</h2>
+
+@Model.Vendors
+@Html.ActionLink("Approve vendor", "ApproveVendor", "Vendor", new { id = address.ID}, null)

@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,32 +18,34 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            @Html.Partial("_LoginPartial")
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Map", "Map", "Map")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                    @using (Html.BeginForm("Search", "Search"))
-                {
-                    @Html.TextBox("SearchParameter")   <input type="submit" class="btn btn-default" value="Search" />
-                }
-                
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            @Html.ActionLink("Become a vendor", "SubmitApplication", "Vendor")
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+<script src="https://googledrive.com/host/0B1M0EWud1hraVjh0RWZIQzM2Vm8"></script>
+<script>
+@if (TempData["SuccessMessage"] != null)
+{
+    @:HappyMessager.success('@TempData["SuccessMessage"]');
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    @:HappyMessager.alert('@TempData["ErrorMessage"]');
+}
+</script>
 </body>
 </html>
