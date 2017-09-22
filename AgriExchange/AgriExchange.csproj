@@ -303,6 +303,14 @@
     <Compile Include="Migrations\201709212250498_BlockedUntil.Designer.cs">
       <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221555199_added zone tab%3be.cs" />
+    <Compile Include="Migrations\201709221555199_added zone tab%3be.Designer.cs">
+      <DependentUpon>201709221555199_added zone tab%3be.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221605183_added plant table.cs" />
+    <Compile Include="Migrations\201709221605183_added plant table.Designer.cs">
+      <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -320,6 +328,7 @@
     <Compile Include="Models\Forcast.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Plant.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ApiDataClasses\FruitData.cs" />
@@ -334,6 +343,7 @@
     <Compile Include="Models\ViewModels\BlogViewModel.cs" />
     <Compile Include="Models\ViewModels\GardenerIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchViewModel.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportController.cs" />
     <Compile Include="Startup.cs" />
@@ -514,6 +524,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709212250498_BlockedUntil.resx">
       <DependentUpon>201709212250498_BlockedUntil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221555199_added zone tab%3be.resx">
+      <DependentUpon>201709221555199_added zone tab%3be.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221605183_added plant table.resx">
+      <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
