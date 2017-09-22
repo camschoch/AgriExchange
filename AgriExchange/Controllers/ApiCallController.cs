@@ -16,22 +16,22 @@ namespace AgriExchange.Controllers
             return View();
         }
 
-        //public ActionResult WeatherApiCall()
-        //{
-        //    string userName = User.Identity.Name;
-        //    var test = ApiCalls.GeoLocationApi(userName);
-        //    string location = "/43.029494/-87.904047";
-        //    ApiCalls.WeatherApi(hourlyTemp);
-        //    return RedirectToAction("Index", "Home");
-        //}
+        ////public ActionResult WeatherApiCall()
+        ////{
+        ////    string userName = User.Identity.Name;
+        ////    var test = ApiCalls.GeoLocationApi(userName);
+        ////    string location = "/43.029494/-87.904047";
+        ////    ApiCalls.WeatherApi(hourlyTemp);
+        ////    return RedirectToAction("Index", "Home");
+        ////}
 
-        //public ActionResult FruitApiCall()
-        //{
-        //    string searchName = "apple";
-        //    string typeSearch = "search=";
-        //    ApiCalls.FruitApi(searchName, typeSearch);
-        //    return RedirectToAction("Index", "Home");
-        //}
+        ////public ActionResult FruitApiCall()
+        ////{
+        ////    string searchName = "apple";
+        ////    string typeSearch = "search=";
+        ////    ApiCalls.FruitApi(searchName, typeSearch);
+        ////    return RedirectToAction("Index", "Home");
+        ////}
         //public ActionResult GeoLocationApi()
         //{
         //    //ApplicationDbContext context = new ApplicationDbContext();
@@ -53,10 +53,10 @@ namespace AgriExchange.Controllers
         //    string searchString = ConvertAddressToSearch.ConvertAddress(userName, context);
         //    ApiCalls.GeoLocationApi(searchString);
         //    return RedirectToAction("Index", "Home");
-        //}
-        //public ActionResult FarmersAlmanacApi()
+        //    //}
+        //public ActionResult FarmersMarketApi()
         //{
-        //    //ApplicationDbContext context = new ApplicationDbContext();
+        //    ApplicationDbContext context = new ApplicationDbContext();
         //    //int addressId = 0;
         //    //string userName = User.Identity.Name;
         //    //var user = (from data in context.Users where data.UserName == userName select data).First();
@@ -67,10 +67,11 @@ namespace AgriExchange.Controllers
         //    //}
         //    //var zipCodeObject = (from data in context.Addresses.Include("Zip") where data.ID == addressId select data).First();
         //    //string zipCode = zipCodeObject.Zip.zip.ToString();
-        //    string userName = User.Identity.Name;
-        //    string zip = GetUserZipcode.UserZipcode(userName);
-        //    ApiCalls.FarmersAlmanacApi(zip);
-        //    return RedirectToAction("Index", "Home");
+        //    //string userName = User.Identity.Name;
+        //    //string zip = GetUserZipcode.UserZipcode(userName, context);
+        //    //string paramater = "zipSearch?zip=";
+        //    //var testing = ApiCalls.FarmersMarketApi(zip, paramater, context, userName);
+        //    //return RedirectToAction("Index", "Home");
         //}
     }
 }

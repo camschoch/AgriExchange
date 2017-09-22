@@ -16,9 +16,8 @@ namespace AgriExchange.StaticClasses
     static public class ApiCalls
     {
 
-        public static void WeatherApi(string location, System.Security.Principal.IPrincipal User)
+        public static void WeatherApi(string location, System.Security.Principal.IPrincipal User, ApplicationDbContext context)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
             List<string> paramaters = new List<string>();
             paramaters.Add("daily-high-temperature");
             paramaters.Add("daily-low-temperature");
@@ -131,12 +130,12 @@ namespace AgriExchange.StaticClasses
                 }
             }
         }
-        
-    
+
+
 
         public static FruitData FruitApi(string search, string typeSearch)
         {
-            var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?"+ typeSearch + search);
+            var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?" + typeSearch + search);
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "3a996033-aeaa-9350-80e7-b7f1ff8c0e90");
             request.AddHeader("cache-control", "no-cache");
@@ -155,41 +154,142 @@ namespace AgriExchange.StaticClasses
             return null;
         }
 
-        public static List<string> GeoLocationApi(string convertedAddress, ApplicationDbContext context)
+        public static GeoAddress GeoLocationApi(string userName, ApplicationDbContext context, string convertedAddress)
         {
-            List<string> test = new List<string>();
-            var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("postman-token", "d0687862-1bdc-4966-e25f-ad919249e058");
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
-            IRestResponse<GeoLocationData> response = client.Execute<GeoLocationData>(request);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var lattitude = response.Data.results[0].geometry[0].location[0].lat;
-                var longitude = response.Data.results[0].geometry[0].location[0].lng;
-                test.Add(lattitude);
-                test.Add(longitude);
-                return test;
+                List<string> location = new List<string>();
+                GeoAddress geoAddress = new GeoAddress();
+                var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("postman-token", "d0687862-1bdc-4966-e25f-ad919249e058");
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+                IRestResponse<GeoLocationData> response = client.Execute<GeoLocationData>(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    geoAddress.address = response.Data.results[0].formatted_address;
+                    var lattitude = response.Data.results[0].geometry[0].location[0].lat;
+                    var longitude = response.Data.results[0].geometry[0].location[0].lng;
+                    location.Add(lattitude);
+                    location.Add(longitude);
+                    geoAddress.coordinant = location;
+                    return geoAddress;
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+        }
+        public static List<string> GeoLocationApiUserAddress(string userName, ApplicationDbContext context, string convertedAddress)
+        {
+            try
+            {
+                List<string> location = new List<string>();
+                GeoAddress geoAddress = new GeoAddress();
+                var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("postman-token", "d0687862-1bdc-4966-e25f-ad919249e058");
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+                IRestResponse<GeoLocationData> response = client.Execute<GeoLocationData>(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    geoAddress.address = response.Data.results[0].formatted_address;
+                    var lattitude = response.Data.results[0].geometry[0].location[0].lat;
+                    var longitude = response.Data.results[0].geometry[0].location[0].lng;
+                    location.Add(lattitude);
+                    location.Add(longitude);
+                    return location;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
 
-        public static List<resultsFarmerItem> FarmersMarketApi(string userZip)
+        public static List<GeoAddress> FarmersMarketApi(string userName)
         {
-            var client = new RestClient("http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip);
+            ApplicationDbContext context = new ApplicationDbContext();
+            var user = (from data in context.Users where data.UserName.ToString() == userName select data).First();
+            var userAddress = (from data in context.UserAddresses.Include("Address.Zip") where data.User.Id == user.Id select data).First();
+            string searchParameter = userAddress.Address.Zip.zip.ToString();
+            var client = new RestClient("http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + searchParameter);
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "22b81d7d-601c-3882-0390-5723fd87b6d2");
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
-            IRestResponse<FarmersAlmanacData> response = client.Execute<FarmersAlmanacData>(request);
+            IRestResponse<FarmersMarketData> response = client.Execute<FarmersMarketData>(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var results = response.Data.results;
-                return results;
+                var goeLocations = FarmersMarketApiAdresses(results, context, userName);
+                return goeLocations;
+            }
+            return null;
+        }
+
+        public static List<GeoAddress> FarmersMarketApiAdresses(List<resultsFarmerItem> listOfAddresses, ApplicationDbContext context, string userName)
+        {
+            List<string> formattedAddresses = new List<string>();
+            List<GeoAddress> geoLocation = new List<GeoAddress>();
+            foreach (var item in listOfAddresses)
+            {                
+                var client = new RestClient("http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + item.id);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("postman-token", "22b81d7d-601c-3882-0390-5723fd87b6d2");
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+                IRestResponse<FarmersMarketData> response = client.Execute<FarmersMarketData>(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var markets = response.Data.marketdetails;
+                    var final = "";
+                    foreach (var thing in markets)
+                    {
+                        var splitItem = thing.Address.Split(',');
+                        for (int i = 0; i < splitItem.Length; i++)
+                        {
+                            final += splitItem[i];
+                        }
+                        final = final.Replace(" ", "+").Replace("++", "+");
+                        formattedAddresses.Add(final);
+                    }
+                }                
+            }
+            foreach (var item in formattedAddresses)
+            {
+                var addToList = GeoLocationApi(userName, context, item);
+                if (addToList != null)
+                {
+                    geoLocation.Add(addToList);
+                }
+            }
+            return geoLocation;
+        }
+
+        public static string CurrentZoneApi(string zipCode)
+        {
+            var client = new RestClient("http://phzmapi.org/" + zipCode + ".json");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("postman-token", "0eb05620-a834-51bf-9844-363331f7ed26");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("authorization", "Basic QUl6YVN5Q0N0X3RrOElzXzB3UnRmZkEzSDBZSFpFc184WndSTzNVOg==");
+            IRestResponse<CurrentZoneData> response = client.Execute<CurrentZoneData>(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var zone = response.Data.zone;
+                return zone;
             }
             return null;
         }

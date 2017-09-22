@@ -209,6 +209,7 @@
     <Compile Include="Controllers\GardenerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,7 +297,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\ApiDataClasses\FarmersAlmanacData.cs" />
+    <Compile Include="Models\ApiDataClasses\CurrentZoneData.cs" />
+    <Compile Include="Models\ApiDataClasses\FarmersMarketData.cs" />
     <Compile Include="Models\ApiDataClasses\GeoLocationData.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\Block.cs" />
@@ -306,6 +308,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentLikes.cs" />
     <Compile Include="Models\CropEntry.cs" />
+    <Compile Include="Models\GeoAddress.cs" />
     <Compile Include="Models\Follow.cs" />
     <Compile Include="Models\Forcast.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -321,6 +324,7 @@
     <Compile Include="Models\ViewModels\AdminVendorViewModel.cs" />
     <Compile Include="Models\ViewModels\BlogViewModel.cs" />
     <Compile Include="Models\ViewModels\GardenerIndexViewModel.cs" />
+    <Compile Include="Models\ViewModels\MapViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StaticClasses\ApiCalls.cs" />
@@ -404,6 +408,7 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Report.cshtml" />
     <Content Include="Views\Blog\SuccessfulReport.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

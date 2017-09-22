@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<div id="map"></div>
+<script>
+       var map;
+       function initMap() {
+           var latlng = new google.maps.LatLng(-34.397, 150.644);
+
+           var mapOptions = {
+               zoom: 8,
+               center: latlng
+           }
+           map = new google.maps.Map(document.getElementById('map'), mapOptions);
+           }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTdGkLIf8iTGxg2cdThwRLUdNSUlizio&callback=initMap">
+</script>
+
