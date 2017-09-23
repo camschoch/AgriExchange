@@ -104,7 +104,7 @@
         foreach(var blog in Model.Blogs)
         {
             <tr>
-                <td>@Html.ActionLink($"{blog.Title}","ViewBlog","Blog", new { id = blog.ID  }, null)</td>
+                <td>@Html.ActionLink($"{blog.Title}","Index","Blog", new { id = blog.ID  }, null)</td>
                 <td>@blog.DatePosted</td>
                 <td>@Html.ActionLink("Remove","Remove","Blog", new { id = blog.ID }, null)</td>
             </tr>

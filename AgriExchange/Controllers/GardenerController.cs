@@ -30,7 +30,7 @@ namespace AgriExchange.Controllers
             model.Follows = (from data in context.Follows.Include("FollowedUser") where data.User.Id == user.Id select data).ToList();
             model.User = user;
             return View(model);
-         }
+        }
         public ActionResult Block()
         {
             return View();
