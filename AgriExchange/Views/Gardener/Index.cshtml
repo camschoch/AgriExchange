@@ -54,6 +54,45 @@
             </tr>
         }
     }
-
+    @if(Model.CropEntries.Count == 0)
+    {
+        <thead>
+            <tr>
+                <th>No crop entries</th>
+            </tr>
+        </thead>
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>Crops</th>
+            </tr>
+        </thead>
+    }
+    @foreach(var entry in Model.CropEntries)
+    {
+        <tr>
+            <td>@entry.Crop</td>
+            <td>@entry.DatePlanted</td>
+        </tr>
+    }
+    <tr>
+        <td>@Html.ActionLink("Add", "Create", "Crop")</td>
+    </tr>
+    @if(Model.Reccomentdations.Count > 0)
+    {
+        <thead>
+            <tr>
+                <th>Reccomendations</th>
+            </tr>
+        </thead>
+        foreach(var reccomendation in Model.Reccomentdations)
+        {
+            <tr>
+                <td>@reccomendation.Name</td>
+            </tr>
+        }
+    }
 </table>
 

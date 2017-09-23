@@ -320,6 +320,10 @@
     <Compile Include="Migrations\201709230102123_added date checked to follow table and added date harvested to crop entry.Designer.cs">
       <DependentUpon>201709230102123_added date checked to follow table and added date harvested to crop entry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709230218284_test.cs" />
+    <Compile Include="Migrations\201709230218284_test.Designer.cs">
+      <DependentUpon>201709230218284_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -550,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709230102123_added date checked to follow table and added date harvested to crop entry.resx">
       <DependentUpon>201709230102123_added date checked to follow table and added date harvested to crop entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709230218284_test.resx">
+      <DependentUpon>201709230218284_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
