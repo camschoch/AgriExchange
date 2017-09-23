@@ -11,6 +11,7 @@ namespace AgriExchange.Models.ViewModels
         public List<Plant> Reccomentdations { get; set; }
         public List<Follow> Follows { get; set; }
         public List<CropEntry> CropEntries { get; set; }
+        public ApplicationUser User { get; set; }
         public GardenerIndexViewModel()
         {
             Forcast = new List<Forcast>();

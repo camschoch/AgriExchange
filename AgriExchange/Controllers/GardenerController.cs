@@ -26,7 +26,8 @@ namespace AgriExchange.Controllers
             model.Reccomentdations = (from data in context.PlantZones.Include("Plant") where data.Zone.ID == refinedZone select data.Plant).ToList();
             model.Forcast = ForcastRetriever.GetForcast(User);
             model.CropEntries = (from data in context.CropEntries where data.User.Id == user.Id select data).ToList();
-
+            model.Follows = (from data in context.Follows.Include("FollowedUser") where data.User.Id == user.Id select data).ToList();
+            model.User = user;
             return View(model);
          }
         public ActionResult Block()

@@ -1,7 +1,39 @@
-﻿
+﻿@model AgriExchange.Models.ViewModels.GardenerIndexViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Wilkommen @Model.User.UserName</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> Forcast </th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Pecipitation</th>
+            <th>Warning</th>
+        </tr>
+    </thead>
+    @foreach(AgriExchange.Models.Forcast forcast in Model.Forcast)
+    {
+        <tr>
+            <td>@forcast.Date</td>
+            <td>@forcast.HighTemp C</td>
+            <td>@forcast.LowTemp C</td>
+            <td>@forcast.Percipitation cm</td>
+            @if(forcast.LowTemp < 5)
+            {
+                <td style="color:crimson">Warning!! Frost</td>
+            }
+            else if(forcast.Percipitation > 2)
+            {
+                <td style="color: deepskyblue">High rain!!!</td>
+            }
+        </tr>
+    }
+</table>
 
