@@ -103,6 +103,12 @@ namespace AgriExchange.Controllers
         {
             model.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
             model.DatePosted = DateTime.Now;
+            var follows = (from data in context.Follows where data.FollowedUser.Id == model.User.Id select data).ToList();
+            foreach(Follow follow in follows)
+            {
+                follow.DateUpdated = DateTime.Now;
+                context.SaveChanges(); 
+            }
             context.BlogPosts.Add(model);
             context.SaveChanges();
             SetBlogTags(model);

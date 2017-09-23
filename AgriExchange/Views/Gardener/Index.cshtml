@@ -35,5 +35,25 @@
             }
         </tr>
     }
+    @if (Model.Follows.Count > 0)
+    {
+        <thead>
+            <tr>
+                <th>Following</th>
+                <th>Notification</th>
+            </tr>
+        </thead>
+        foreach (AgriExchange.Models.Follow follow in Model.Follows)
+        {
+            <tr>
+                <td>@Html.ActionLink($"{follow.User.UserName}","ViewGardener", "Gardener",new { id = follow.User.Id })</td>
+                @if(follow.DateChecked < follow.DateUpdated)
+                {
+                    <td style="color: deeppink "> New Updates!!!</td>
+                }
+            </tr>
+        }
+    }
+
 </table>
 
