@@ -19,10 +19,16 @@ namespace AgriExchange.Controllers
         }
         public ActionResult Index()
         {
+            var user = UserRetriever.RetrieveUser(User, context);
+            var zone = (from data in context.UserAddresses.Include("Address") where data.User.Id == user.Id select data.Address.Zone).First();
+            var refinedZone = int.Parse(zone.Replace("a", String.Empty).Replace("b", String.Empty));
             GardenerIndexViewModel model = new GardenerIndexViewModel();
+            model.Reccomentdations = (from data in context.PlantZones.Include("Plant") where data.Zone.ID == refinedZone select data.Plant).ToList();
             model.Forcast = ForcastRetriever.GetForcast(User);
-            return View();
-        }
+            model.CropEntries = (from data in context.CropEntries where data.User.Id == user.Id select data).ToList();
+
+            return View(model);
+         }
         public ActionResult Block()
         {
             return View();

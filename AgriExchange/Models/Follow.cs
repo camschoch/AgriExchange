@@ -10,5 +10,6 @@ namespace AgriExchange.Models
         public int ID { get; set; }
         public ApplicationUser User { get; set; }
         public ApplicationUser FollowedUser { get; set; }
+        public DateTime DateChecked { get; set; }
     }
 }
