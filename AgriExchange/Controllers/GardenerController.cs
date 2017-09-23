@@ -25,6 +25,7 @@ namespace AgriExchange.Controllers
             GardenerIndexViewModel model = new GardenerIndexViewModel();
             model.Reccomentdations = (from data in context.PlantZones.Include("Plant") where data.Zone.ID == refinedZone select data.Plant).ToList();
             model.Forcast = ForcastRetriever.GetForcast(User);
+            model.Blogs = (from data in context.BlogPosts where data.User.Id == user.Id select data).ToList();
             model.CropEntries = (from data in context.CropEntries where data.User.Id == user.Id select data).ToList();
             model.Follows = (from data in context.Follows.Include("FollowedUser") where data.User.Id == user.Id select data).ToList();
             model.User = user;
