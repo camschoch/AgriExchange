@@ -212,6 +212,7 @@
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\VendorApplicationsController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -456,6 +457,11 @@
     <Content Include="Views\Report\ReportIndex.cshtml" />
     <Content Include="Views\Report\BlockUser.cshtml" />
     <Content Include="Views\Report\BlockUserForm.cshtml" />
+    <Content Include="Views\VendorApplications\Create.cshtml" />
+    <Content Include="Views\VendorApplications\Delete.cshtml" />
+    <Content Include="Views\VendorApplications\Details.cshtml" />
+    <Content Include="Views\VendorApplications\Edit.cshtml" />
+    <Content Include="Views\VendorApplications\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
