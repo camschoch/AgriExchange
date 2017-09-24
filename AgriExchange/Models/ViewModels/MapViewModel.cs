@@ -1,4 +1,5 @@
-﻿using AgriExchange.StaticClasses;
+﻿using AgriExchange.Models.ApiDataClasses;
+using AgriExchange.StaticClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,10 @@ namespace AgriExchange.Models.ViewModels
 {
     public class MapViewModel
     {
-        ApplicationDbContext context;
-        public MapViewModel()
-        {
-            context = new ApplicationDbContext();
-        }
-        public void makingList()
-        {
-            
-        }
+        public List<GeoAddress> results { get; set; }
+        public List<ApplicationUser> Vendor { get; set; }
+        public float lat { get; set; }
+        public float lng { get; set; }
+
     }
 }
