@@ -40,18 +40,18 @@ namespace AgriExchange.Controllers
             return View(model);
         }
 
-        public ActionResult Index(int id)
-        {
-            ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
-            BlogViewModel model = new BlogViewModel();
-            model.User = user;
-            model.Blogs = (from data in context.BlogPosts.Include("User") where (data.User.Id == user.Id && data.ID == id) select data).ToList();
-            model.Comments = GetComments(model.Blogs);
-            model.BlogLikes = GetBlogLikes(model.Blogs);
-            model.CommentLikes = GetCommentLikes(model.Comments);
-            model.Tags = GetBlogTags(model.Blogs);
-            return View(model);
-        }
+        //public ActionResult Index(int id)
+        //{
+        //    ApplicationUser user = StaticClasses.UserRetriever.RetrieveUser(User, context);
+        //    BlogViewModel model = new BlogViewModel();
+        //    model.User = user;
+        //    model.Blogs = (from data in context.BlogPosts.Include("User") where (data.User.Id == user.Id && data.ID == id) select data).ToList();
+        //    model.Comments = GetComments(model.Blogs);
+        //    model.BlogLikes = GetBlogLikes(model.Blogs);
+        //    model.CommentLikes = GetCommentLikes(model.Comments);
+        //    model.Tags = GetBlogTags(model.Blogs);
+        //    return View(model);
+        //}
 
 
         private List<BlogTags> GetBlogTags(List<BlogPost> blogs)
@@ -103,6 +103,12 @@ namespace AgriExchange.Controllers
         {
             model.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
             model.DatePosted = DateTime.Now;
+            var follows = (from data in context.Follows where data.FollowedUser.Id == model.User.Id select data).ToList();
+            foreach(Follow follow in follows)
+            {
+                follow.DateUpdated = DateTime.Now;
+                context.SaveChanges(); 
+            }
             context.BlogPosts.Add(model);
             context.SaveChanges();
             SetBlogTags(model);

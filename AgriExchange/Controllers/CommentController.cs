@@ -54,10 +54,10 @@ namespace AgriExchange.Controllers
             CommentLikes like = new CommentLikes();
             like.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
             like.Comment = (from data in context.Comments where data.ID == id select data).First();
-            var likes = (from data in context.BlogLikes where data.Blog.ID == like.Comment.ID && data.User.Id == like.User.Id select data).ToList();
+            var likes = (from data in context.CommentLikes where data.Comment.ID == like.Comment.ID && data.User.Id == like.User.Id select data).ToList();
             if (likes.Count > 0)
             {
-                context.BlogLikes.Remove(likes[0]);
+                context.CommentLikes.Remove(likes[0]);
                 context.SaveChanges();
             }
             else

@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ApiCallController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\GardenerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -313,6 +314,18 @@
     <Compile Include="Migrations\201709221605183_added plant table.Designer.cs">
       <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221848040_added plant zone table.cs" />
+    <Compile Include="Migrations\201709221848040_added plant zone table.Designer.cs">
+      <DependentUpon>201709221848040_added plant zone table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709230102123_added date checked to follow table and added date harvested to crop entry.cs" />
+    <Compile Include="Migrations\201709230102123_added date checked to follow table and added date harvested to crop entry.Designer.cs">
+      <DependentUpon>201709230102123_added date checked to follow table and added date harvested to crop entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709230218284_test.cs" />
+    <Compile Include="Migrations\201709230218284_test.Designer.cs">
+      <DependentUpon>201709230218284_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -333,6 +346,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Plant.cs" />
+    <Compile Include="Models\PlantZone.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ApiDataClasses\FruitData.cs" />
@@ -453,6 +467,8 @@
     <Content Include="Views\Report\ReportIndex.cshtml" />
     <Content Include="Views\Report\BlockUser.cshtml" />
     <Content Include="Views\Report\BlockUserForm.cshtml" />
+    <Content Include="Views\Gardener\Block.cshtml" />
+    <Content Include="Views\Crop\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -537,6 +553,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221605183_added plant table.resx">
       <DependentUpon>201709221605183_added plant table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221848040_added plant zone table.resx">
+      <DependentUpon>201709221848040_added plant zone table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709230102123_added date checked to follow table and added date harvested to crop entry.resx">
+      <DependentUpon>201709230102123_added date checked to follow table and added date harvested to crop entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709230218284_test.resx">
+      <DependentUpon>201709230218284_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

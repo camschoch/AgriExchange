@@ -56,6 +56,7 @@ namespace AgriExchange.Models
         public DbSet<Forcast> Forcasts { get; set; }
         public DbSet<Zone> Zones { get; set; }
         public DbSet<Plant> Plants { get; set; }
+        public DbSet<PlantZone> PlantZones { get;set;}
         
     }
 }
