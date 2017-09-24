@@ -133,8 +133,9 @@ namespace AgriExchange.StaticClasses
 
 
 
-        public static FruitData FruitApi(string search, string typeSearch)
+        public static List<fruitDataItem> FruitApi(string search, string typeSearch)
         {
+            List<fruitDataItem> fruitInfo = new List<fruitDataItem>();
             var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?" + typeSearch + search);
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "3a996033-aeaa-9350-80e7-b7f1ff8c0e90");
@@ -147,9 +148,9 @@ namespace AgriExchange.StaticClasses
                 var convertedData = JsonConvert.DeserializeObject<FruitData>(httpResponse.Content);
                 foreach (var item in convertedData.results)
                 {
-                    var hold = item;
+                    fruitInfo.Add(item);
                 }
-                return convertedData;
+                return fruitInfo;
             }
             return null;
         }
