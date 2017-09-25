@@ -67,6 +67,9 @@
         <thead>
             <tr>
                 <th>Crops</th>
+                <th>Date Planted</th>
+                <th>Date Hervested</th>
+                <th>Public</th>
             </tr>
         </thead>
     }
@@ -75,6 +78,22 @@
         <tr>
             <td>@entry.Crop</td>
             <td>@entry.DatePlanted</td>
+            @if(entry.DateHarvested.Ticks == entry.DatePlanted.Ticks)
+            {
+                <td>@Html.ActionLink("Harvest","Harvest","Crop", new { id = entry.ID }, null)</td>
+            }
+            else
+            {
+                <td>@entry.DateHarvested</td>
+            }
+            @if(entry.IsPublic)
+            {
+                <td>@Html.ActionLink("yes", "ChangePublic", "Crop", new { id = entry.ID }, null)</td>
+            }
+            else
+            {
+                <td>@Html.ActionLink("no", "ChangePublic", "Crop", new { id = entry.ID }, null)</td>
+            }
         </tr>
     }
     <tr>
