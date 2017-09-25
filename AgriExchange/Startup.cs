@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using System;
 
 [assembly: OwinStartupAttribute(typeof(AgriExchange.Startup))]
 namespace AgriExchange
@@ -28,6 +29,7 @@ namespace AgriExchange
                 var user = new ApplicationUser();
                 user.UserName = "lars.alfonse@gmail.com";
                 string userPWD = "Qwerty!1";
+                user.BlockedUntil = new DateTime(1900, 1, 1);
                 var chkUser = UserManager.Create(user, userPWD);
                 if (chkUser.Succeeded)
                 {
