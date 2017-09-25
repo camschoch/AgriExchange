@@ -39,6 +39,7 @@ namespace AgriExchange.Controllers
         }
         public ActionResult ShowMarkerVendor(string userId)
         {
+            //NATHAN TOLD ME TO
             MapViewModel model = new MapViewModel();
             string userName = User.Identity.Name;
             model.results = ApiCalls.FarmersMarketApi(userName, context);

@@ -12,10 +12,10 @@ namespace AgriExchange.StaticClasses
         {
             int addressId = 0;
             var user = (from data in context.Users where data.UserName == userName select data).First();
-            var allAddresses = (from data in context.UserAddresses where data.User.Id == user.Id select data);
+            var allAddresses = (from data in context.UserAddresses.Include("Address") where data.User.Id == user.Id select data);
             foreach (var item in allAddresses)
             {
-                addressId = item.ID;
+                addressId = item.Address.ID;
             }
             var addressObject = (from data in context.Addresses.Include("City").Include("City.State") where data.ID == addressId select data).First();
             string realAddress = addressObject.addressLine.ToLower();

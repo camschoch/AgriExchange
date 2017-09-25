@@ -46,13 +46,28 @@
         foreach (AgriExchange.Models.Follow follow in Model.Follows)
         {
             <tr>
-                <td>@Html.ActionLink($"{follow.User.UserName}","ViewGardener", "Gardener",new { id = follow.User.Id })</td>
-                @if(follow.DateChecked < follow.DateUpdated)
+                <td>@Html.ActionLink($"{follow.FollowedUser.UserName}","ViewGardener", "Gardener",new { id = follow.ID }, null)</td>
+                @if(follow.DateChecked.Ticks < follow.DateUpdated.Ticks)
                 {
                     <td style="color: deeppink "> New Updates!!!</td>
                 }
             </tr>
         }
+        <tr>
+            <td>@Html.ActionLink("Add","Follow","Gardener")</td>
+        </tr>
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>Following</th>
+                <th>Notification</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>@Html.ActionLink("Add", "Follow", "Gardener")</td>
+        </tr>
     }
     @if(Model.CropEntries.Count == 0)
     {
