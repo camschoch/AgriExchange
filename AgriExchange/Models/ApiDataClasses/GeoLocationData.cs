@@ -20,7 +20,7 @@ namespace AgriExchange.Models.ApiDataClasses
     }
     public class locationItem
     {
-        public string lat { get; set; }
-        public string lng { get; set; }
+        public float lat { get; set; }
+        public float lng { get; set; }
     }
 }

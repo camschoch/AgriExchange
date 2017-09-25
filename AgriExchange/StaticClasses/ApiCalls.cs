@@ -133,8 +133,9 @@ namespace AgriExchange.StaticClasses
 
 
 
-        public static FruitData FruitApi(string search, string typeSearch)
+        public static List<fruitDataItem> FruitApi(string search, string typeSearch)
         {
+            List<fruitDataItem> fruitInfo = new List<fruitDataItem>();
             var client = new RestClient("http://tropicalfruitandveg.com/api/tfvjsonapi.php?" + typeSearch + search);
             var request = new RestRequest(Method.GET);
             request.AddHeader("postman-token", "3a996033-aeaa-9350-80e7-b7f1ff8c0e90");
@@ -147,9 +148,9 @@ namespace AgriExchange.StaticClasses
                 var convertedData = JsonConvert.DeserializeObject<FruitData>(httpResponse.Content);
                 foreach (var item in convertedData.results)
                 {
-                    var hold = item;
+                    fruitInfo.Add(item);
                 }
-                return convertedData;
+                return fruitInfo;
             }
             return null;
         }
@@ -158,7 +159,7 @@ namespace AgriExchange.StaticClasses
         {
             try
             {
-                List<string> location = new List<string>();
+                List<float> location = new List<float>();
                 GeoAddress geoAddress = new GeoAddress();
                 var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
                 var request = new RestRequest(Method.GET);
@@ -184,11 +185,11 @@ namespace AgriExchange.StaticClasses
                 return null;
             }
         }
-        public static List<string> GeoLocationApiUserAddress(string userName, ApplicationDbContext context, string convertedAddress)
+        public static List<float> GeoLocationApiUserAddress(string userName, ApplicationDbContext context, string convertedAddress)
         {
             try
             {
-                List<string> location = new List<string>();
+                List<float> location = new List<float>();
                 GeoAddress geoAddress = new GeoAddress();
                 var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=AIzaSyCCt_tk8Is_0wRtffA3H0YHZEs_8ZwRO3U");
                 var request = new RestRequest(Method.GET);
@@ -215,9 +216,8 @@ namespace AgriExchange.StaticClasses
         }
 
 
-        public static List<GeoAddress> FarmersMarketApi(string userName)
+        public static List<GeoAddress> FarmersMarketApi(string userName, ApplicationDbContext context)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
             var user = (from data in context.Users where data.UserName.ToString() == userName select data).First();
             var userAddress = (from data in context.UserAddresses.Include("Address.Zip") where data.User.Id == user.Id select data).First();
             string searchParameter = userAddress.Address.Zip.zip.ToString();

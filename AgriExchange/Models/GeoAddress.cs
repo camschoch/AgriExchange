@@ -8,7 +8,7 @@ namespace AgriExchange.Models
     public class GeoAddress
     {
         public string address { get; set; }
-        public List<string> coordinant { get; set; }
+        public List<float> coordinant { get; set; }
 
     }
 }
