@@ -35,5 +35,36 @@ namespace AgriExchange.Controllers
         {
             return View();
         }
+        public ActionResult Follow()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Follow(ApplicationUser model)
+        {
+            Follow follow = new Models.Follow();
+            follow.User = StaticClasses.UserRetriever.RetrieveUser(User, context);
+            try
+            {
+                follow.FollowedUser = (from data in context.Users where data.UserName == model.UserName select data).First();
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Gardener");
+            }
+            follow.DateChecked = DateTime.Now;
+            follow.DateUpdated = DateTime.Now;
+            var follows = (from data in context.Follows where data.User.Id == follow.User.Id && data.FollowedUser.Id == follow.FollowedUser.Id select data).ToList();
+            if(follows.Count > 0)
+            {
+                return RedirectToAction("Index", "Gardener");
+            }
+            else
+            {
+                context.Follows.Add(follow);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Gardener");
+            }
+        }
     }
 }

@@ -469,6 +469,7 @@
     <Content Include="Views\Report\BlockUserForm.cshtml" />
     <Content Include="Views\Gardener\Block.cshtml" />
     <Content Include="Views\Crop\Create.cshtml" />
+    <Content Include="Views\Gardener\Follow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

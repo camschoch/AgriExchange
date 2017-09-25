@@ -46,8 +46,8 @@
         foreach (AgriExchange.Models.Follow follow in Model.Follows)
         {
             <tr>
-                <td>@Html.ActionLink($"{follow.User.UserName}","ViewGardener", "Gardener",new { id = follow.User.Id })</td>
-                @if(follow.DateChecked < follow.DateUpdated)
+                <td>@Html.ActionLink($"{follow.FollowedUser.UserName}","ViewGardener", "Gardener",new { id = follow.User.Id })</td>
+                @if(follow.DateChecked.Ticks < follow.DateUpdated.Ticks)
                 {
                     <td style="color: deeppink "> New Updates!!!</td>
                 }
