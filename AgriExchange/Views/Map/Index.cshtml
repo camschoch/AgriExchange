@@ -1,8 +1,21 @@
-﻿
+﻿@model AgriExchange.Models.ViewModels.MapViewModel
 @{
     ViewBag.Title = "Index";
 }
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Farmers Markets Addresses</th>
+        <th>Show On Map</th>
+    </tr>
+    @foreach (var d in Model.results)
+    {
+        <tr>
+            <td>@Html.DisplayFor(temp => d.address )</td>
+            <td>@Html.ActionLink("Show On Map", "ShowMarkerMarkets", "Map", new { lat = d.coordinant[0], lng = d.coordinant[1] }, null)</td>
+        </tr>
 
+    }
+</table>  
 <head>
     <style>
         #map {
@@ -15,16 +28,39 @@
 <script>
        var map;
        function initMap() {
-           var latlng = new google.maps.LatLng(-34.397, 150.644);
+           var latlng = new google.maps.LatLng(43.038902, -87.9065);
+           var testing = { lat: @Model.lat, lng: @Model.lng};
 
            var mapOptions = {
                zoom: 8,
                center: latlng
            }
-           map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+           map = new google.maps.Map(document.getElementById('map'), mapOptions)
+           var marker = new google.maps.Marker({
+               position: testing,
+               map: map,
+               title: 'Hello World!'
+           });
            }
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTdGkLIf8iTGxg2cdThwRLUdNSUlizio&callback=initMap">
 </script>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Vendor Addresses</th>
+        <th>Show on Map</th>
+    </tr>
+    @foreach (var d in Model.Vendor)
+    {
+        <tr>
+            <td>@Html.DisplayFor(temp => d.UserName)</td>
+            <td>@Html.ActionLink("Show On Map", "ShowMarkerVendor", "Map", new { userId = d.Id }, null)</td>
+        </tr>
+
+    }
+</table>
+  
 

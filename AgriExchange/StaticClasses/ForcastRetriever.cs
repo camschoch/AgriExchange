@@ -15,9 +15,21 @@ namespace AgriExchange.StaticClasses
             DateTime today = DateTime.Now;
             string todayDate = today.Year.ToString() + "-" + today.Month.ToString() + "-" + today.Day;
             ApplicationUser user = UserRetriever.RetrieveUser(User, context);
-            if (context.Forcasts.First().Date == todayDate && context.Forcasts.First().User.Id == user.Id)
+            if (context.Forcasts.ToList().Count > 0)
             {
-                return context.Forcasts.ToList();
+                if (context.Forcasts.First().Date == todayDate && context.Forcasts.First().User.Id == user.Id)
+                {
+                    return context.Forcasts.ToList();
+                }
+                else
+                {
+                    string userName = User.Identity.Name;
+                    string convertedAddress = ConvertAddressToSearch.ConvertAddress(userName, context);
+                    var geoLocation = ApiCalls.GeoLocationApiUserAddress(userName, context, convertedAddress);
+                    string paramater = "/" + geoLocation[0] + "/" + geoLocation[1];
+                    ApiCalls.WeatherApi(paramater, User, context);
+                    return context.Forcasts.ToList();
+                }
             }
             else
             {

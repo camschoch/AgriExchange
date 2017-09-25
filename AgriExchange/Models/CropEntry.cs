@@ -11,6 +11,7 @@ namespace AgriExchange.Models
         public ApplicationUser User { get; set; }
         public string Crop { get; set; }
         public DateTime DatePlanted { get; set; }
+        public DateTime DateHarvested { get; set; }
         public bool IsPublic { get; set; }
     }
 }

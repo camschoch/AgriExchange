@@ -40,12 +40,13 @@ namespace AgriExchange.Controllers
                 context.UserAddresses.Add(junction);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Gardener");
         }
         private Address GetAddress(Address model)
         {
             model.City = GetCity(model);
             model.Zip = GetZip(model);
+            model.Zone = StaticClasses.ApiCalls.CurrentZoneApi(model.Zip.zip.ToString());
             var addresses = (from data in context.Addresses where data.addressLine == model.addressLine && data.City.City == model.City.City && data.Zip.zip == model.Zip.zip select data).ToList();
             if (addresses.Count > 0)
             {
