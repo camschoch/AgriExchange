@@ -66,5 +66,16 @@ namespace AgriExchange.Controllers
                 return RedirectToAction("Index", "Gardener");
             }
         }
+        public ActionResult ViewGardener(int id)
+        {
+            GardenerIndexViewModel model = new GardenerIndexViewModel();
+            Follow follow = (from data in context.Follows where data.ID == id select data).First();
+            follow.DateChecked = DateTime.Now;
+            context.SaveChanges();
+            var user = (from data in context.Follows where data.ID == id select data.FollowedUser).First();
+            model.Blogs = (from data in context.BlogPosts where data.User.Id == user.Id select data).ToList();
+            model.CropEntries = (from data in context.CropEntries where data.User.Id == user.Id && data.IsPublic select data).ToList();
+            return View(model);
+        }
     }
 }

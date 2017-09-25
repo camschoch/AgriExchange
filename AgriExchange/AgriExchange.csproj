@@ -470,6 +470,7 @@
     <Content Include="Views\Gardener\Block.cshtml" />
     <Content Include="Views\Crop\Create.cshtml" />
     <Content Include="Views\Gardener\Follow.cshtml" />
+    <Content Include="Views\Gardener\ViewGardener.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

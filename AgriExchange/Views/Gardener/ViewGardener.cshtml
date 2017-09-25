@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "ViewGardener";
+}
+
+<h2>ViewGardener</h2>
+<table>
+@if (Model.CropEntries.Count == 0)
+{
+    <thead>
+        <tr>
+            <th>No crop entries</th>
+        </tr>
+    </thead>
+}
+else
+{
+    <thead>
+        <tr>
+            <th>Crops</th>
+            <th>Date Planted</th>
+            <th>Date Harvested</th>
+        </tr>
+    </thead>
+}
+@foreach (var entry in Model.CropEntries)
+{
+    <tr>
+        <td>@entry.Crop</td>
+        <td>@entry.DatePlanted</td>
+        @if (entry.DateHarvested.Ticks == entry.DatePlanted.Ticks)
+        {
+            <td>Not Harvested</td>
+        }
+        else
+        {
+            <td>@entry.DateHarvested</td>
+        }
+        </tr>
+}
+@if (Model.Blogs.Count > 0)
+{
+    <thead>
+        <tr>
+            <th>Blogs</th>
+        </tr>
+    </thead>
+    foreach (var blog in Model.Blogs)
+    {
+        <tr>
+            <td>@Html.ActionLink($"{blog.Title}", "Index", "Blog", new { id = blog.ID }, null)</td>
+            <td>@blog.DatePosted</td>
+            <td>@Html.ActionLink("Remove", "Remove", "Blog", new { id = blog.ID }, null)</td>
+        </tr>
+    }
+}
+</table>
+
+
