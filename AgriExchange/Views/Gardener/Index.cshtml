@@ -53,6 +53,21 @@
                 }
             </tr>
         }
+        <tr>
+            <td>@Html.ActionLink("Add","Follow","Gardener")</td>
+        </tr>
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>Following</th>
+                <th>Notification</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>@Html.ActionLink("Add", "Follow", "Gardener")</td>
+        </tr>
     }
     @if(Model.CropEntries.Count == 0)
     {
