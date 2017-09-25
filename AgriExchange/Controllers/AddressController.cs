@@ -40,7 +40,7 @@ namespace AgriExchange.Controllers
                 context.UserAddresses.Add(junction);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Gardener");
         }
         private Address GetAddress(Address model)
         {
