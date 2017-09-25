@@ -72,7 +72,7 @@ namespace AgriExchange.Controllers
 
             return View(vendorlist.ToList());
         }
-
+        [HttpGet]
         public ActionResult ApproveThisVendor(int id)
         {
             VendorApplications vendorApplications = db.VendorApplications.Find(id);
