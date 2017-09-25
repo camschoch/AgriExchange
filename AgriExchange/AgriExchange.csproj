@@ -477,6 +477,7 @@
     <Content Include="Views\Crop\Create.cshtml" />
     <Content Include="Views\Gardener\Follow.cshtml" />
     <Content Include="Views\Gardener\ViewGardener.cshtml" />
+    <Content Include="Views\VendorApplications\ApproveThisVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,22 +59,6 @@ namespace AgriExchange.Controllers
             return View(model);
 
 
-        }
-        
-        public ActionResult ApproveVendor(int id)
-        {
-          var Application =  (from data in context.VendorApplications where data.ID == id select data).First();
-              Application.IsApproved = true;
-            return RedirectToAction("CreateUser", new {email = Application.Email});
-
-        }
-
-        //I need to possibly reroute user to registration page that allows a drop down menu to be selected as a gardener/vendor/admin
-        //public ActionResult CreateUser(string email)
-        //{
-        //    ApplicationUser model = new ApplicationUser();
-        //    model.Email = email;
-        //    return View(model);
-            
+        }        
     }
 }
